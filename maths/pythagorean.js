@@ -40,11 +40,13 @@ $("#theorem_execution").on("click", function() {
     const cathetus1 = $("#cathetus1").val();
     const cathetus2 = $("#cathetus2").val();
 
-    pythagorean.theorem(
-        hypothenuse,
-        cathetus1,
-        cathetus2
-    ); 
+    if (hypothenuse != "" && cathetus1 != "" && cathetus2 != "") {
+        pythagorean.theorem(
+            hypothenuse,
+            cathetus1,
+            cathetus2
+        ); 
+    }
 }); // #theorem_execution.on 
 
 
