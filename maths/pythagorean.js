@@ -1,5 +1,3 @@
-const SQUARE_VALUE = 2;
-
 const pythagorean = {
     /**
      * Pythagorean theorem used to check if a triangle is right or not.
@@ -12,13 +10,23 @@ const pythagorean = {
      *  Seconde cathere of the potential right triangle.
      */
     theorem(hypothenuse, cathete1, cathete2) {
-        const squareHypothenuse = Math.pow(hypothenuse, SQUARE_VALUE);
-        const squareCathetuses = Math.pow(cathete1, SQUARE_VALUE) + Math.pow(cathete2, SQUARE_VALUE);
+        const squareHypothenuse = Math.pow(hypothenuse, Constant.PYTHAGOREAN_SQUARE_VALUE);
+        const squareCathetuses = Math.pow(cathete1, Constant.PYTHAGOREAN_SQUARE_VALUE) + 
+                                 Math.pow(cathete2, Constant.PYTHAGOREAN_SQUARE_VALUE);
 
         const $resultDiv = $('#theorem_result');
         let conclusion = (squareHypothenuse === squareCathetuses) 
-            ? "<p>Le triangle est rectangle en C.</p>"
-            : "<p>Le triangle n'est pas rectangle en C.</p>";
+            ? '<div class="alert alert-success">' +
+                '<i class="fa fa-check-circle-o" aria-hidden="true"></i>&nbsp;Le triangle est rectangle en C.' +
+                '</div>'
+            : '<div class="alert alert-danger">' + 
+                '<i class="fa fa-exclamation-circle" aria-hidden="true"></i>&nbsp;Le triangle n\'est pas rectangle en C.' +
+                '</div>';
+
+        // Remove last result after X result displayed.
+        if ($resultDiv.children().length === Constant.NB_RESULTS_DISPLAY) {
+            $resultDiv.children()[0].remove();
+        }
 
         $resultDiv.append(conclusion);
     }
