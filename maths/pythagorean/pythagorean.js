@@ -10,6 +10,8 @@ const pythagorean = {
      *  Seconde cathere of the potential right triangle.
      * @returns 
      *  A boolean to indicate if the triangle is right or not.
+     * 
+     * @see Constant.PYTHAGOREAN_SQUARE_VALUE
      */
     theorem(hypothenuse, cathete1, cathete2) {
         const squareHypothenuse = Math.pow(hypothenuse, Constant.PYTHAGOREAN_SQUARE_VALUE);
@@ -42,6 +44,15 @@ $("#theorem-execution").on("click", function() {
             ['success', 'danger']
         );
     }
-}); // #theorem_execution.on 
+}); // #theorem_execution.on
+
+/**
+ * Function call after the page loading.
+ * 
+ * @see Utils.createBreadcrumb
+ */
+$(document).ready(function() {
+    Utils.createBreadcrumb('breadcrumb', ['Hub', 'Mathématiques', 'Pythagore']);
+}); // document.ready
 
 

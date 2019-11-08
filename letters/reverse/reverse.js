@@ -36,4 +36,13 @@ $('#reverse-text').on('click', function() {
             ['success']
         );
     }
-})
+}); // #reverse-text.on 
+
+/**
+ * Function call after the page loading.
+ * 
+ * @see Utils.createBreadcrumb
+ */
+$(document).ready(function() {
+    Utils.createBreadcrumb('breadcrumb', ['Hub', 'Lettres', 'Renverseur']);
+}); // document.ready

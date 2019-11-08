@@ -1,6 +1,7 @@
-
 /**
  * Function call after the page loading.
+ * 
+ * @see Utils.createBreadcrumb
  */
 $(document).ready(function() {
     _fillMainBadgeCategory();

@@ -40,4 +40,13 @@ $('#compute-gcd').on('click', function() {
             ['success', 'warning']
         );
     }
-})
+}); // #compute-gcd.on 
+
+/**
+ * Function call after the page loading.
+ * 
+ * @see Utils.createBreadcrumb
+ */
+$(document).ready(function() {
+    Utils.createBreadcrumb('breadcrumb', ['Hub', 'Mathématiques', 'PGCD']);
+}); // document.ready
