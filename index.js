@@ -3,6 +3,23 @@
  * Function call after the page loading.
  */
 $(document).ready(function() {
+    _fillMainBadgeCategory();
+    _fillBadgeCategories();
+}); // document.ready
+
+/**
+ * Fill the content of the main badge of the title 'Category'.
+ */
+function _fillMainBadgeCategory() {
+    const nbCategories = $('.container > article').length
+    const $badge = $('#badge-categories');
+    $badge.text(nbCategories);
+}
+
+/**
+ * Fill the content of the badge for each categories found in app.
+ */
+function _fillBadgeCategories() {
     let subjectsId = [
         'mathematical',
     ];
@@ -19,4 +36,4 @@ $(document).ready(function() {
         const $badge = $(badgeSelector);
         $badge.text(nbChildren);
     }); // subjectsId.forEach
-}); // document.ready
+}
