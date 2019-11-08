@@ -59,15 +59,19 @@ const Utils = {
 
         let index = 0;
         let activeClass = '';
+        let ariaCurrentPage = '';
+        let link = '';
         for(i = 0; i < path.length; ++i) {
             if (index === (path.length - 1)) {
                 activeClass = 'active';
+                ariaCurrentPage = 'aria-current="page"';
+                link = path[i];
+            } else {
+                link = `<a href="${urls[i]}">${path[i]}</a>`
             }
 
-            breadcrumb += `<li class="breadcrumb-item ${activeClass}" aria-current="page">` + 
-                           `<a href="${urls[i]}">${path[i]}</a>` + 
-                           `</li>`;
-            index--;
+            breadcrumb += `<li class="breadcrumb-item ${activeClass}" ${ariaCurrentPage}>` + link + `</li>`;
+            index++;
         }
 
         breadcrumb += '</ol>';
