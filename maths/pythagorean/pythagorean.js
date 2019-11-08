@@ -1,27 +1,3 @@
-const pythagorean = {
-    /**
-     * Pythagorean theorem used to check if a triangle is right or not.
-     * 
-     * @param {number} hypothenuse 
-     *  Hypothenuse of the potential right triangle
-     * @param {number} cathete1 
-     *  First cathere of the potential right triangle.
-     * @param {number} cathete2 
-     *  Seconde cathere of the potential right triangle.
-     * @returns 
-     *  A boolean to indicate if the triangle is right or not.
-     * 
-     * @see Constant.PYTHAGOREAN_SQUARE_VALUE
-     */
-    theorem(hypothenuse, cathete1, cathete2) {
-        const squareHypothenuse = Math.pow(hypothenuse, Constant.PYTHAGOREAN_SQUARE_VALUE);
-        const squareCathetuses = Math.pow(cathete1, Constant.PYTHAGOREAN_SQUARE_VALUE) + 
-                                 Math.pow(cathete2, Constant.PYTHAGOREAN_SQUARE_VALUE);
-
-        return (squareHypothenuse === squareCathetuses);
-    }
-}
-
 /**
  * Get the content of all fields, then execute the Pythagorean theorem.
  */
@@ -30,12 +6,16 @@ $("#theorem-execution").on("click", function() {
     const cathetus1 = $("#cathetus1").val();
     const cathetus2 = $("#cathetus2").val();
 
+    console.log(hypothenuse)
+
     if (hypothenuse != "" && cathetus1 != "" && cathetus2 != "") {
-        const result = pythagorean.theorem(
+        const result  = new Mathematics().pythagoreanTheorem(
             hypothenuse,
             cathetus1,
             cathetus2
         );
+
+        console.log(result);
         
         Utils.showResult(
             'theorem-result', 
