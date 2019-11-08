@@ -22,7 +22,6 @@ const Utils = {
      * The first element of the array contains the class in case of success and the second index indicate the failed class.
      */
     showResult(resultId, conclusionPredicate, messages, alertClasses) {
-        const $resultDiv = $(`#${resultId}`);
         const alertClass = (conclusionPredicate) ? alertClasses[0] : alertClasses[1];
         const message = (conclusionPredicate) ? messages[0] : messages[1];
 
@@ -35,10 +34,42 @@ const Utils = {
                 `</div>`;
 
         // Remove last result after X result displayed.
+        const $resultDiv = $(`#${resultId}`);
         if ($resultDiv.children().length === Constant.NB_RESULTS_DISPLAY) {
             $resultDiv.children()[0].remove();
         }
 
         $resultDiv.append(conclusion);
     },
+
+    /**
+     * Create a breadcrumb to move on website more easily. 
+     * 
+     * @param {string} $breadcrumbDiv 
+     *  The identifier of the block who contains the breadcrumb.
+     * @param {Array} path 
+     *  An array of string who contains the path to show in breadcrumb.
+     */
+    createBreadcrumb($breadcrumbDivId, path) {
+        let breadcrumb = '';
+        breadcrumb += '<nav aria-label="breadcrumb">';
+        breadcrumb += '<ol class="breadcrumb">';
+
+        let index = path.length - 1;
+        let activeClass = '';
+        for(const el of path) {
+            if (index === 0) {
+                activeClass = 'active';
+            } 
+
+            breadcrumb += `<li class="breadcrumb-item ${activeClass}" aria-current="page">${el}</li>`;
+            index--;
+        }
+
+        breadcrumb += '</ol>';
+        breadcrumb += '</nav>';
+        
+        const $breadcrumbDiv = $(`#${$breadcrumbDivId}`);
+        $breadcrumbDiv.append(breadcrumb);
+    }
 }

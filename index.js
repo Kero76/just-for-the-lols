@@ -5,6 +5,7 @@
 $(document).ready(function() {
     _fillMainBadgeCategory();
     _fillBadgeCategories();
+    Utils.createBreadcrumb('breadcrumb', ['Hub']);
 }); // document.ready
 
 /**
