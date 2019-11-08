@@ -1,0 +1,4 @@
+const Constant = {
+    NB_RESULTS_DISPLAY: 3,
+    PYTHAGOREAN_SQUARE_VALUE: 2,
+}
