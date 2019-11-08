@@ -51,8 +51,12 @@ $("#theorem-execution").on("click", function() {
  * 
  * @see Utils.createBreadcrumb
  */
-$(document).ready(function() {
-    Utils.createBreadcrumb('breadcrumb', ['Hub', 'Mathématiques', 'Pythagore']);
+$(document).ready(function() {    
+    Utils.createBreadcrumb(
+        'breadcrumb', 
+        ['Hub', 'Mathématiques', 'Pythagore'],
+        ['../../index.html', '', 'pythagorean.html'],
+    );
 }); // document.ready
 
 

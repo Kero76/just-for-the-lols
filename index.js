@@ -6,7 +6,11 @@
 $(document).ready(function() {
     _fillMainBadgeCategory();
     _fillBadgeCategories();
-    Utils.createBreadcrumb('breadcrumb', ['Hub']);
+    Utils.createBreadcrumb(
+        'breadcrumb', 
+        ['Hub'], 
+        ['index.html'],
+    );
 }); // document.ready
 
 /**

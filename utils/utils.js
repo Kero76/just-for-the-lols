@@ -49,20 +49,24 @@ const Utils = {
      *  The identifier of the block who contains the breadcrumb.
      * @param {Array} path 
      *  An array of string who contains the path to show in breadcrumb.
+     * @param {Array} urls
+     *  Local urls found on link present on each element of the breadcrumb.
      */
-    createBreadcrumb($breadcrumbDivId, path) {
+    createBreadcrumb($breadcrumbDivId, path, urls) {
         let breadcrumb = '';
         breadcrumb += '<nav aria-label="breadcrumb">';
         breadcrumb += '<ol class="breadcrumb">';
 
-        let index = path.length - 1;
+        let index = 0;
         let activeClass = '';
-        for(const el of path) {
-            if (index === 0) {
+        for(i = 0; i < path.length; ++i) {
+            if (index === (path.length - 1)) {
                 activeClass = 'active';
-            } 
+            }
 
-            breadcrumb += `<li class="breadcrumb-item ${activeClass}" aria-current="page">${el}</li>`;
+            breadcrumb += `<li class="breadcrumb-item ${activeClass}" aria-current="page">` + 
+                           `<a href="${urls[i]}">${path[i]}</a>` + 
+                           `</li>`;
             index--;
         }
 

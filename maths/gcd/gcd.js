@@ -48,5 +48,9 @@ $('#compute-gcd').on('click', function() {
  * @see Utils.createBreadcrumb
  */
 $(document).ready(function() {
-    Utils.createBreadcrumb('breadcrumb', ['Hub', 'Mathématiques', 'PGCD']);
+    Utils.createBreadcrumb(
+        'breadcrumb', 
+        ['Hub', 'Mathématiques', 'PGCD'],
+        ['../../index.html', '', 'gcd.html'],
+    );
 }); // document.ready

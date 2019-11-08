@@ -44,5 +44,9 @@ $('#reverse-text').on('click', function() {
  * @see Utils.createBreadcrumb
  */
 $(document).ready(function() {
-    Utils.createBreadcrumb('breadcrumb', ['Hub', 'Lettres', 'Renverseur']);
+    Utils.createBreadcrumb(
+        'breadcrumb', 
+        ['Hub', 'Lettres', 'Renverseur'], 
+        ['../../index.html', '', 'reverse.html'],
+    );
 }); // document.ready
