@@ -22,6 +22,7 @@ function _fillMainBadgeCategory() {
 function _fillBadgeCategories() {
     let subjectsId = [
         'mathematical',
+        'letters',
     ];
 
     /**
