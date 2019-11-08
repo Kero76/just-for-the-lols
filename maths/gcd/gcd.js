@@ -1,3 +1,5 @@
+const utils = new Utils();
+
 /**
  * Get the content of the operands, compute the gcd and show the result under the form.
  */
@@ -7,7 +9,7 @@ $('#compute-gcd').on('click', function() {
 
     if (operandA != "" && operandB != "") {
         const result = new Mathematics().euclideanAlgorithm(operandA, operandB);
-        Utils.showResult(
+        utils.showResult(
             'gcd-result', 
             (result != 1), 
             [`Le PGCD(${operandA}, ${operandB}) est ${result}`, `Le PGCD(${operandA}, ${operandB}) est ${result}`], 
@@ -22,7 +24,7 @@ $('#compute-gcd').on('click', function() {
  * @see Utils.createBreadcrumb
  */
 $(document).ready(function() {
-    Utils.createBreadcrumb(
+    utils.createBreadcrumb(
         'breadcrumb', 
         ['Hub', 'Mathématiques', 'PGCD'],
         ['../../index.html', '', 'gcd.html'],

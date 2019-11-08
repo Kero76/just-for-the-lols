@@ -1,3 +1,5 @@
+const utils = new Utils();
+
 /**
  * Function call after the page loading.
  * 
@@ -6,7 +8,7 @@
 $(document).ready(function() {
     _fillMainBadgeCategory();
     _fillBadgeCategories();
-    Utils.createBreadcrumb(
+    utils.createBreadcrumb(
         'breadcrumb', 
         ['Hub'], 
         ['index.html'],

@@ -1,3 +1,5 @@
+const utils = new Utils();
+
 /**
  * Get the content of all fields, then execute the Pythagorean theorem.
  */
@@ -6,18 +8,14 @@ $("#theorem-execution").on("click", function() {
     const cathetus1 = $("#cathetus1").val();
     const cathetus2 = $("#cathetus2").val();
 
-    console.log(hypothenuse)
-
     if (hypothenuse != "" && cathetus1 != "" && cathetus2 != "") {
         const result  = new Mathematics().pythagoreanTheorem(
             hypothenuse,
             cathetus1,
             cathetus2
         );
-
-        console.log(result);
         
-        Utils.showResult(
+        utils.showResult(
             'theorem-result', 
             result, 
             [`Le triangle est rectangle en C.`, `Le triangle n'est pas rectangle en C.`], 
@@ -32,7 +30,7 @@ $("#theorem-execution").on("click", function() {
  * @see Utils.createBreadcrumb
  */
 $(document).ready(function() {    
-    Utils.createBreadcrumb(
+    utils.createBreadcrumb(
         'breadcrumb', 
         ['Hub', 'Mathématiques', 'Pythagore'],
         ['../../index.html', '', 'pythagorean.html'],

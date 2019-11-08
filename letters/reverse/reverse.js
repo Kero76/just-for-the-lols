@@ -1,3 +1,5 @@
+const utils = new Utils();
+
 /**
  * Get the content of the operands, compute the gcd and show the result under the form.
  */
@@ -6,7 +8,7 @@ $('#reverse-text').on('click', function() {
 
     if (text != "") {
         const result = new Word().reverse(text);
-        Utils.showResult(
+        utils.showResult(
             'reverse-result', 
             (result != ""), 
             [result], 
@@ -21,7 +23,7 @@ $('#reverse-text').on('click', function() {
  * @see Utils.createBreadcrumb
  */
 $(document).ready(function() {
-    Utils.createBreadcrumb(
+    utils.createBreadcrumb(
         'breadcrumb', 
         ['Hub', 'Lettres', 'Renverseur'], 
         ['../../index.html', '', 'reverse.html'],
