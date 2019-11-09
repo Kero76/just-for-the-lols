@@ -1,25 +1,4 @@
-const reverse = {
-    
-    /**
-     * Inverse the order of all letters of the text send in parameter.
-     * 
-     * @param {string} text
-     *  The initial text to reverse order of all characters.
-     * @returns {string}
-     *  The text with all characters inversed. 
-     */
-    reverse(text) {
-        let reverseText = "";
-        let index = text.length - 1;
-
-        while (index !== -1) {
-            reverseText += text[index];
-            index--;
-        }
-
-        return reverseText;
-    },
-};
+const utils = new Utils();
 
 /**
  * Get the content of the operands, compute the gcd and show the result under the form.
@@ -28,8 +7,8 @@ $('#reverse-text').on('click', function() {
     const text = $('#text').val();
 
     if (text != "") {
-        const result = reverse.reverse(text);
-        Utils.showResult(
+        const result = new Word().reverse(text);
+        utils.showResult(
             'reverse-result', 
             (result != ""), 
             [result], 
@@ -44,7 +23,7 @@ $('#reverse-text').on('click', function() {
  * @see Utils.createBreadcrumb
  */
 $(document).ready(function() {
-    Utils.createBreadcrumb(
+    utils.createBreadcrumb(
         'breadcrumb', 
         ['Hub', 'Lettres', 'Renverseur'], 
         ['../../index.html', '', 'reverse.html'],

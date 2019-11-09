@@ -1,4 +1,15 @@
-const Utils = {
+/**
+ * Utils class.
+ */
+class Utils {
+
+    /**
+     * Empty constructor
+     */
+    constructor() {
+
+    }
+    
     /**
      *  
      * @param {string} resultId 
@@ -40,7 +51,7 @@ const Utils = {
         }
 
         $resultDiv.append(conclusion);
-    },
+    }
 
     /**
      * Create a breadcrumb to move on website more easily. 
@@ -61,7 +72,7 @@ const Utils = {
         let activeClass = '';
         let ariaCurrentPage = '';
         let link = '';
-        for(i = 0; i < path.length; ++i) {
+        for(let i = 0; i < path.length; ++i) {
             if (index === (path.length - 1)) {
                 activeClass = 'active';
                 ariaCurrentPage = 'aria-current="page"';
