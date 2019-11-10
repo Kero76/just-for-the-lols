@@ -10,10 +10,17 @@
         <title>Hub</title>
     </head>
 
-    <body>
-        <header id="breadcrumb" class="container"></header>
+    <body>   
+        <section id="body-content" class="container">
+            
+        </section>
+    </body>
+ 
+    
+    <!-- <body> -->
+        <!-- <header id="breadcrumb" class="container"></header> -->
 
-        <section class="container">
+        <!-- <section class="container">
                 <h1 class="col-sm-12">Catégories
                     <span id="badge-categories" class="badge badge-primary badge-pill">0</span>
                 </h1>
@@ -40,13 +47,43 @@
                     <li><a href="maths/gcd/gcd.html">PGCD (Plus Grand Commun Diviseur)</a></li>
                 </ul>
             </article>
-        </section>
-    </body>
+        </section> -->
+    <!-- </body> -->
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsrender/1.0.5/jsrender.min.js" integrity="sha256-xqPIiYCGCnDO2BbZdPplAc1Rc5u+UHlQzMawCsWosEo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.4.2/handlebars.js" integrity="sha256-hSzapznWRy/aOZkctlN03an9DxCLlN8ZCQS0lxntiHg=" crossorigin="anonymous"></script>
+
+    <!-- body-template. -->
+    <script id="body-template" type="text/x-jsrender">
+        <h1 class="col-sm-12">Catégories
+            <span id="badge-categories" class="badge badge-primary badge-pill">{{:size}}</span>
+        </h1>
+
+        {{for categories sortBy="name"}}
+        <article class="col-sm-12">
+            <h2>{{:name}} 
+                <span id="badge-{{:id}}" class="badge badge-info badge-pill">{{:size}}</span>
+            </h2>
+
+            <ul id="subjects-{{:id}}">
+                {{for subjects }}
+                    <li><a href="{{:link}}">{{:name}}</a></li>
+                {{/for}}
+            </ul>
+        </article>
+        {{/for}}
+    </script>
 
     <script src="classes/utils/Utils.js"></script>
+    <script src="classes/data/Home.js"></script>
+    <script src="classes/views/Render.js"></script>
     <script src="index.js"></script>
+
+    <!-- Move in index.js  -->
+    <script  type="text/javascript">
+
+    </script>
 </html>
