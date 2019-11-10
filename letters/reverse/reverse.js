@@ -1,21 +1,26 @@
 const utils = new Utils();
+const render = new Render();
 
 /**
- * Get the content of the operands, compute the gcd and show the result under the form.
+ * Internal function use to hydrate and render the reverse template.
  */
-$('#reverse-text').on('click', function() {
-    const text = $('#text').val();
+function _hydrateAndRenderReverseTemplate() {
+    const reverse = new Reverse();
 
-    if (text != "") {
-        const result = new Word().reverse(text);
-        utils.showResult(
-            'reverse-result', 
-            (result != ""), 
-            [result], 
-            ['success']
-        );
-    }
-}); // #reverse-text.on 
+    render.renderTemplate('body-template', reverse.data, 'body-content');
+};
+
+/**
+ * Internal function use to hydrate and render the breadcrumb.
+ */
+function _hydrateAndRenderBreadcrumbTemplate() {
+    const breadcrumb = new BreadCrumb(
+        ['Hub', 'Lettres', 'Renverseur'], 
+        ['../../index.html', '', 'reverse.html']
+    );
+    
+    render.renderTemplate('breadcrumb-template', breadcrumb.data, 'breadcrumb-content');
+}
 
 /**
  * Function call after the page loading.
@@ -23,9 +28,24 @@ $('#reverse-text').on('click', function() {
  * @see Utils.createBreadcrumb
  */
 $(document).ready(function() {
-    utils.createBreadcrumb(
-        'breadcrumb', 
-        ['Hub', 'Lettres', 'Renverseur'], 
-        ['../../index.html', '', 'reverse.html'],
-    );
+    _hydrateAndRenderReverseTemplate();
+    _hydrateAndRenderBreadcrumbTemplate();
+
+    /**
+     * Get the content of the text and reverse it on alert.
+     */
+    $('#reverse-text').on('click', function() {
+        const text = $('#text').val();
+
+        if (text != "") {
+            const result = new Word().reverse(text);
+            utils.showResult(
+                'reverse-result', 
+                (result != ""), 
+                [result], 
+                ['success']
+            );
+        }
+    }); // #reverse-text.on 
 }); // document.ready
+
