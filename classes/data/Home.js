@@ -40,7 +40,7 @@ class Home {
                 "subjects": _mathematicalSubjects,
                 "size": _mathematicalSubjects.length
             }
-        ]
+        ];
     
         // Data used in template.
         this.data = {

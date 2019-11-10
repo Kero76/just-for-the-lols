@@ -10,51 +10,22 @@
         <title>Hub</title>
     </head>
 
-    <body>   
+    <body>
+        <!-- Breadcrumb template. -->
+        <header id="breadcrumb-content" class="container">
+
+        </header>
+
         <section id="body-content" class="container">
-            
+
         </section>
     </body>
- 
-    
-    <!-- <body> -->
-        <!-- <header id="breadcrumb" class="container"></header> -->
 
-        <!-- <section class="container">
-                <h1 class="col-sm-12">Catégories
-                    <span id="badge-categories" class="badge badge-primary badge-pill">0</span>
-                </h1>
-
-                <article class="col-sm-12">
-                    <h2>Lettres 
-                        <span id="badge-letters" class="badge badge-info badge-pill">0</span>
-                    </h2>
-    
-                    <ul id="subjects-letters">
-                        <li><a href="letters/reverse/reverse.html">Renverseur de texte</a></li>
-                    </ul>
-                </article>
-            </section>
-
-        <section class="container">
-            <article class="col-sm-12">
-                <h2>Mathématiques 
-                    <span id="badge-mathematical" class="badge badge-info badge-pill">0</span>
-                </h2>
-
-                <ul id="subjects-mathematical">
-                    <li><a href="maths/pythagorean/pythagorean.html">Pythagore</a></li>
-                    <li><a href="maths/gcd/gcd.html">PGCD (Plus Grand Commun Diviseur)</a></li>
-                </ul>
-            </article>
-        </section> -->
-    <!-- </body> -->
-
+    <!-- Librairies scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsrender/1.0.5/jsrender.min.js" integrity="sha256-xqPIiYCGCnDO2BbZdPplAc1Rc5u+UHlQzMawCsWosEo=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.4.2/handlebars.js" integrity="sha256-hSzapznWRy/aOZkctlN03an9DxCLlN8ZCQS0lxntiHg=" crossorigin="anonymous"></script>
 
     <!-- body-template. -->
     <script id="body-template" type="text/x-jsrender">
@@ -77,13 +48,29 @@
         {{/for}}
     </script>
 
+    <!-- BreadCrumb template -->
+    <script id="breadcrumb-template" type="text/x-jsrender">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+            {{for items}}
+                {{if isActive}}
+                <li class="breadcrumb-item active" aria-current="page">
+                    {{:label}}
+                </li>
+                {{else}}
+                <li class="breadcrumb-item">
+                    <a href="{{:url}}">{{:label}}</a>
+                </li>
+                {{/if}}
+            {{/for}}
+            </ol>
+        </nav>
+    </script>
+
+    <!-- Import local libs and files. -->
     <script src="classes/utils/Utils.js"></script>
     <script src="classes/data/Home.js"></script>
+    <script src="classes/data/BreadCrumb.js"></script>
     <script src="classes/views/Render.js"></script>
     <script src="index.js"></script>
-
-    <!-- Move in index.js  -->
-    <script  type="text/javascript">
-
-    </script>
 </html>
