@@ -72,7 +72,7 @@ class Utils {
         let activeClass = '';
         let ariaCurrentPage = '';
         let link = '';
-        for(let i = 0; i < path.length; ++i) {
+        for (let i = 0; i < path.length; ++i) {
             if (index === (path.length - 1)) {
                 activeClass = 'active';
                 ariaCurrentPage = 'aria-current="page"';
