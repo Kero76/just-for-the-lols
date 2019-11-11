@@ -1,39 +1,31 @@
+const utils = new Utils();
+const render = new Render();
 
 /**
- * Function call after the page loading.
+ * Internal function use to hydrate and render the home template.
+ */
+function _hydrateAndRenderHomeTemplate() {
+    const home = new Home();
+
+    render.renderTemplate('body-template', home.data, 'body-content');
+};
+
+/**
+ * Internal function use to hydrate and render the breadcrumb.
+ */
+function _hydrateAndRenderBreadcrumbTemplate() {
+    const breadcrumb = new BreadCrumb(
+        ['Hub'],
+        ['index.html']
+    );
+    
+    render.renderTemplate('breadcrumb-template', breadcrumb.data, 'breadcrumb-content');
+}
+
+/**
+ * Execute the method to hydrate and render all templates.
  */
 $(document).ready(function() {
-    _fillMainBadgeCategory();
-    _fillBadgeCategories();
+    _hydrateAndRenderHomeTemplate();
+    _hydrateAndRenderBreadcrumbTemplate();
 }); // document.ready
-
-/**
- * Fill the content of the main badge of the title 'Category'.
- */
-function _fillMainBadgeCategory() {
-    const nbCategories = $('.container > article').length
-    const $badge = $('#badge-categories');
-    $badge.text(nbCategories);
-}
-
-/**
- * Fill the content of the badge for each categories found in app.
- */
-function _fillBadgeCategories() {
-    let subjectsId = [
-        'mathematical',
-    ];
-
-    /**
-     * Loop on each subjects and for each subject, 
-     * we compute the number of elements and change the value found in the badge.
-     */
-    subjectsId.forEach(function(subject) {
-        const subjectSelector = '#subjects-' + subject;
-        const nbChildren = $(subjectSelector).children('li').length;
-
-        const badgeSelector = `#badge-${subject}`;
-        const $badge = $(badgeSelector);
-        $badge.text(nbChildren);
-    }); // subjectsId.forEach
-}
