@@ -4,7 +4,7 @@ const render = new Render();
 /**
  * Internal function use to hydrate and render the reverse template.
  */
-function _hydrateAndRenderReverseTemplate() {
+function _hydrateAndRenderBodyTemplate() {
     const reverse = new Reverse();
 
     render.renderTemplate('body-template', reverse.data, 'body-content');
@@ -16,7 +16,7 @@ function _hydrateAndRenderReverseTemplate() {
 function _hydrateAndRenderBreadcrumbTemplate() {
     const breadcrumb = new BreadCrumb(
         ['Hub', 'Lettres', 'Renverseur'], 
-        ['../../index.html', '', 'reverse.html']
+        ['../../../index.html', '', 'reverse.html']
     );
     
     render.renderTemplate('breadcrumb-template', breadcrumb.data, 'breadcrumb-content');
@@ -28,7 +28,7 @@ function _hydrateAndRenderBreadcrumbTemplate() {
  * @see Utils.createBreadcrumb
  */
 $(document).ready(function() {
-    _hydrateAndRenderReverseTemplate();
+    _hydrateAndRenderBodyTemplate();
     _hydrateAndRenderBreadcrumbTemplate();
 
     /**
@@ -40,7 +40,7 @@ $(document).ready(function() {
         if (text != "") {
             const result = new Word().reverse(text);
             utils.showResult(
-                'reverse-result', 
+                'alert-result', 
                 (result != ""), 
                 [result], 
                 ['success']

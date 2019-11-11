@@ -11,18 +11,18 @@ class Home {
         const _letterSubjects = [
             {
                 "name": "Renverseur de texte",
-                "link": "letters/reverse/reverse.html"
+                "link": "views/letters/reverse/reverse.html"
             }
         ];
         // Mathematical subjects
         const _mathematicalSubjects = [
             {
                 "name": "Théorème de Pythagore",
-                "link": "maths/pythagorean/pythagorean.html"
+                "link": "views/maths/pythagorean/pythagorean.html"
             },
             {
                 "name": "PGCD (Plus Grand Commun Diviseur)",
-                "link": "maths/gcd/gcd.html"
+                "link": "views/maths/gcd/gcd.html"
             }
         ];
     

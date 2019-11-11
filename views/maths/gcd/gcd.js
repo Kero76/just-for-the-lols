@@ -1,25 +1,10 @@
-// const utils = new Utils();
-
-// /**
-//  * Function call after the page loading.
-//  * 
-//  * @see Utils.createBreadcrumb
-//  */
-// $(document).ready(function() {
-//     utils.createBreadcrumb(
-//         'breadcrumb', 
-//         ['Hub', 'Mathématiques', 'PGCD'],
-//         ['../../index.html', '', 'gcd.html'],
-//     );
-// }); // document.ready
-
 const utils = new Utils();
 const render = new Render();
 
 /**
  * Internal function use to hydrate and render the reverse template.
  */
-function _hydrateAndRenderGcdTemplate() {
+function _hydrateAndRenderBodyTemplate() {
     const gcd = new Gcd();
 
     render.renderTemplate('body-template', gcd.data, 'body-content');
@@ -30,8 +15,8 @@ function _hydrateAndRenderGcdTemplate() {
  */
 function _hydrateAndRenderBreadcrumbTemplate() {
     const breadcrumb = new BreadCrumb(
-        ['Hub', 'Lettres', 'Renverseur'], 
-        ['../../index.html', '', 'reverse.html']
+        ['Hub', 'Mathématiques', 'PGCD'], 
+        ['../../../index.html', '', 'gcd.html']
     );
     
     render.renderTemplate('breadcrumb-template', breadcrumb.data, 'breadcrumb-content');
@@ -43,7 +28,7 @@ function _hydrateAndRenderBreadcrumbTemplate() {
  * @see Utils.createBreadcrumb
  */
 $(document).ready(function() {
-    _hydrateAndRenderGcdTemplate();
+    _hydrateAndRenderBodyTemplate();
     _hydrateAndRenderBreadcrumbTemplate();
 
     /**
@@ -56,7 +41,7 @@ $(document).ready(function() {
         if (operandA != "" && operandB != "") {
             const result = new Mathematics().euclideanAlgorithm(operandA, operandB);
             utils.showResult(
-                'gcd-result', 
+                'alert-result', 
                 (result != 1), 
                 [`Le PGCD(${operandA}, ${operandB}) est ${result}`, `Le PGCD(${operandA}, ${operandB}) est ${result}`], 
                 ['success', 'warning']
