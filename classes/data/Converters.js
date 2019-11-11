@@ -17,15 +17,16 @@ class Converters {
             },
             {
                 "type": "input",
-                "id": "value-convert",
+                "id": "value-converted",
                 "label": "Valeur convertie",
                 "placeholder": "Valeur convertie",
-                "ariaDescribedBy": "help-value-convert",
+                "ariaDescribedBy": "help-value-converted",
                 "helpText": "Valeur convertie.",
+                "readonly": true
             },
             {
                 "type": "select",
-                "id": "unit-convert",
+                "id": "unit-converted",
                 "label": "Unité",
                 "options": this.getLitersOptions(),
             }
@@ -52,31 +53,38 @@ class Converters {
         return [
             {
                 "name": "kilolitre",
-                "symbol": "kl"
+                "symbol": "kl",
+                "value": 1000000
             },
             {
                 "name": "Hectolitre",
-                "symbol": "hl"
+                "symbol": "hl",
+                "value": 100000
             },
             {
                 "name": "Décalitre",
-                "symbol": "dal"
+                "symbol": "dal",
+                "value": 10000
             },
             {
                 "name": "litre",
-                "symbol": "L"
+                "symbol": "L",
+                "value": 1000
             },
             {
                 "name": "décilitre",
-                "symbol": "dl"
+                "symbol": "dl",
+                "value": 100
             },
             {
                 "name": "centilitre",
-                "symbol": "cl"
+                "symbol": "cl",
+                "value": 10
             },
             {
                 "name": "millilitre",
-                "symbol": "ml"
+                "symbol": "ml",
+                "value": 1
             }
         ];
     }
@@ -91,31 +99,38 @@ class Converters {
         return [
             {
                 "name": "kilomètre",
-                "symbol": "km"
+                "symbol": "km",
+                "value": 1000000
             },
             {
                 "name": "hectomètre",
-                "symbol": "hm"
+                "symbol": "hm",
+                "value": 100000
             },
             {
                 "name": "décamètre",
-                "symbol": "dam"
+                "symbol": "dam",
+                "value": 10000
             },
             {
                 "name": "mètre",
-                "symbol": "m"
+                "symbol": "m",
+                "value": 1000
             },
             {
                 "name": "décimètre",
-                "symbol": "dm"
+                "symbol": "dm",
+                "value": 100
             },
             {
                 "name": "centimètre",
-                "symbol": "cm"
+                "symbol": "cm",
+                "value": 10
             },
             {
                 "name": "millimètre",
-                "symbol": "mm"
+                "symbol": "mm",
+                "value": 1
             }
         ];
     }
@@ -130,31 +145,38 @@ class Converters {
         return [
             {
                 "name": "kilogramme",
-                "symbol": "kg"
+                "symbol": "kg",
+                "value": 1000000
             },
             {
                 "name": "hectogramme",
-                "symbol": "hg"
+                "symbol": "hg",
+                "value": 100000
             },
             {
                 "name": "décagramme",
-                "symbol": "dag"
+                "symbol": "dag",
+                "value": 10000
             },
             {
                 "name": "gramme",
-                "symbol": "g"
+                "symbol": "g",
+                "value": 1000
             },
             {
                 "name": "décigramme",
-                "symbol": "dg"
+                "symbol": "dg",
+                "value": 100
             },
             {
                 "name": "centigramme",
-                "symbol": "cg"
+                "symbol": "cg",
+                "value": 10
             },
             {
                 "name": "milligramme",
-                "symbol": "mg"
+                "symbol": "mg",
+                "value": 1
             }
         ];
     }

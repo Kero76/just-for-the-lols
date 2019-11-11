@@ -39,7 +39,7 @@
                 {{if type=="input"}}
                     <div class="form-group">
                         <label for="{{:id}}">{{:label}}</label>
-                        <input type="text" name="{{:id}}" id="{{:id}}" class="form-control" placeholder="{{:placeholder}}" aria-describedby="{{:ariaDescribedBy}}">
+                        <input type="text" name="{{:id}}" id="{{:id}}" class="form-control" placeholder="{{:placeholder}}" aria-describedby="{{:ariaDescribedBy}}" {{if readonly}} readonly {{/if}}>
                         <small id="{{:ariaDescribedBy}}" class="text-muted"{{:helpText}}</small>
                     </div>
                 {{else type=="textarea"}}
@@ -50,7 +50,7 @@
                     <label for="{{:id}}">{{:label}}</label>
                     <select class="form-control" id="{{:id}}">
                     {{for options}}
-                        <option>{{:symbol}}</option>
+                        <option value="{{:value}}">{{:symbol}}</option>
                     {{/for}}
                     </select>
                 {{else}}
@@ -92,6 +92,6 @@
     <script src="../../../classes/data/BreadCrumb.js"></script>
     <script src="../../../classes/data/Converters.js"></script>
     <script src="../../../classes/views/Render.js"></script>
-    <!-- <script src="../../../classes/Mathematics.js"></script> -->
+    <script src="../../../classes/Physics.js"></script>
     <script src="converters.js"></script>
 </html>

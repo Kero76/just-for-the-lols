@@ -1,4 +1,3 @@
-const utils = new Utils();
 const render = new Render();
 
 /**
@@ -31,27 +30,23 @@ $(document).ready(function() {
     _hydrateAndRenderBodyTemplate();
     _hydrateAndRenderBreadcrumbTemplate();
     
-    // /**
-    //  * Get the content of all fields, then execute the Pythagorean theorem.
-    //  */
-    // $("#theorem-execution").on("click", function() {
-    //     const hypothenuse = $("#hypothenuse").val();
-    //     const cathetus1 = $("#cathetus1").val();
-    //     const cathetus2 = $("#cathetus2").val();
+    /**
+     * Get the value at convert, his default unit and the target unit,
+     * then convert eh result and display it on the second input flag as readonly.
+     */
+    $("#convert").on("click", function() {
+        const value = parseFloat($("#value-at-convert").val());
+        const initialUnit = $("#unit-at-convert").val();
+        const targetUnit = $("#unit-converted").val();
 
-    //     if (hypothenuse != "" && cathetus1 != "" && cathetus2 != "") {
-    //         const result  = new Mathematics().pythagoreanTheorem(
-    //             hypothenuse,
-    //             cathetus1,
-    //             cathetus2
-    //         );
+        if (value != "" && initialUnit != "" && targetUnit != "") {
+            const valueConverted  = new Physics().convert(
+                value,
+                initialUnit,
+                targetUnit
+            );
             
-    //         utils.showResult(
-    //             'alert-result', 
-    //             result, 
-    //             [`Le triangle est rectangle en C.`, `Le triangle n'est pas rectangle en C.`], 
-    //             ['success', 'danger']
-    //         );
-    //     }
-    // }); // #theorem_execution.on
+            $('#value-converted').val(valueConverted);
+        }
+    }); // #theorem_execution.on
 }); // document.ready
