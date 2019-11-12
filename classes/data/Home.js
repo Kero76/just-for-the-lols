@@ -23,6 +23,10 @@ class Home {
             {
                 "name": "PGCD (Plus Grand Commun Diviseur)",
                 "link": "views/maths/gcd/gcd.html"
+            },
+            {
+                "name": "PPCM (Plus Petit Commun Multiple)",
+                "link": "views/maths/lcm/lcm.html"
             }
         ];
         // Physical subjects 
