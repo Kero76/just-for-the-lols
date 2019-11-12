@@ -1,4 +1,15 @@
-const Utils = {
+/**
+ * Utils class.
+ */
+class Utils {
+
+    /**
+     * Empty constructor
+     */
+    constructor() {
+
+    }
+    
     /**
      *  
      * @param {string} resultId 
@@ -40,7 +51,7 @@ const Utils = {
         }
 
         $resultDiv.append(conclusion);
-    },
+    }
 
     /**
      * Create a breadcrumb to move on website more easily. 
@@ -61,7 +72,7 @@ const Utils = {
         let activeClass = '';
         let ariaCurrentPage = '';
         let link = '';
-        for(i = 0; i < path.length; ++i) {
+        for (let i = 0; i < path.length; ++i) {
             if (index === (path.length - 1)) {
                 activeClass = 'active';
                 ariaCurrentPage = 'aria-current="page"';
@@ -79,5 +90,45 @@ const Utils = {
         
         const $breadcrumbDiv = $(`#${$breadcrumbDivId}`);
         $breadcrumbDiv.append(breadcrumb);
+    }
+
+    /**
+     * Get the html element by his id.
+     * 
+     * @param {string} idName 
+     *  Identifier of the html element.
+     * @returns
+     *  The node element.
+     */
+    getHtmlNodeByIdName(idName) {
+        return this._getHtmlNodeByType('#', idName);
+    }
+
+    /**
+     * Get the html element by their class names.
+     * 
+     * @param {string} className 
+     *  Class name of the html element.
+     * @returns 
+     *  The node element.
+     */
+    getHtmlNodeByClassName(className) {
+        return this._getHtmlNodeByType('.', className);
+    }
+
+    /**
+     * Get the html element by his type and his identifier.
+     *  
+     * @param {char} type 
+     *  Type of the html node like '.' for class or '#' for id.
+     * @param {string} identifier 
+     *  Identifier name of the element html required.
+     * @returns
+     *  The node element.
+     */
+    _getHtmlNodeByType(type, identifier) {
+        return (identifier.charAt(0) === type) 
+            ? $(identifier)
+            : $(`#${identifier}`);
     }
 }
