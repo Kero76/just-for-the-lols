@@ -34,34 +34,37 @@
             <h2>{{:title}}</h2>
             <p>{{:description}}</p>
             
+            
             {{for fields}} 
-                <div class="form-group">
+            <div class="row">
+                {{for convertFields}}
+                <div class="form-group col">
                 {{if type=="input"}}
-                    <div class="form-group">
-                        <label for="{{:id}}">{{:label}}</label>
-                        <input type="text" name="{{:id}}" id="{{:id}}" class="form-control" placeholder="{{:placeholder}}" aria-describedby="{{:ariaDescribedBy}}" {{if readonly}} readonly {{/if}}>
-                        <small id="{{:ariaDescribedBy}}" class="text-muted"{{:helpText}}</small>
-                    </div>
+                    <label for="{{:id}}">{{:label}}</label>
+                    <input type="text" name="{{:id}}" id="{{:id}}" class="form-control" placeholder="{{:placeholder}}" aria-describedby="{{:ariaDescribedBy}}" {{if readonly}} readonly {{/if}}>
                 {{else type=="textarea"}}
                     <label for="{{:id}}">{{:label}}</label>
                     <textarea class="form-control rounded-0" id="{{:id}}" rows="{{:rows}}" aria-describedby="{{:ariaDescribedBy}}">{{:placeholder}}</textarea>
-                    <small id="{{:ariaDescribedBy}}" class="text-muted"{{:helpText}}</small>
-                {{else type="select"}}
+                {{else type=="select"}}
                     <label for="{{:id}}">{{:label}}</label>
                     <select class="form-control" id="{{:id}}">
                     {{for options}}
                         <option value="{{:value}}">{{:symbol}}</option>
                     {{/for}}
                     </select>
+                {{else type=="button"}}
+                    <button id="{{:id}}" type="{{:buttonType}}" class="btn btn-primary">
+                        {{:label}}
+                    </button>
                 {{else}}
                     <p>Le champ souhaité n'est pas supporté par l'application, merci de contacter le responsable pour qu'il intègre ce nouveau type de champ.</p>
                 {{/if}}
                 </div>
-            {{/for}}
 
-            <button id="{{:button.id}}" type="button" class="btn btn-primary">
-                {{:button.label}}
-            </button>
+
+                {{/for}}
+            </div>
+            {{/for}}
 
             <div id="alert-result" class="mt-3"></div>
         </article>

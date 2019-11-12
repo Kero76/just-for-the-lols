@@ -1,34 +1,128 @@
 class Converters {
     constructor() {
-        const _fields = [
+        const _literFields = [
             {
                 "type": "input",
-                "id": "value-at-convert",
-                "label": "Valeur à convertir",
-                "placeholder": "Valeur a convertir",
-                "ariaDescribedBy": "help-value-at-convert",
-                "helpText": "Valeur à convertir.",
+                "id": "liter-value-at-convert",
+                "label": "Volume à convertir",
+                "placeholder": "Volume à convertir",
+                "ariaDescribedBy": "help-liter-value-at-convert",
+                "helpText": "Volume à convertir.",
             },
             {
                 "type": "select",
-                "id": "unit-at-convert",
+                "id": "liter-unit-at-convert",
                 "label": "Unité",
                 "options": this.getLitersOptions(),
             },
             {
                 "type": "input",
-                "id": "value-converted",
-                "label": "Valeur convertie",
-                "placeholder": "Valeur convertie",
-                "ariaDescribedBy": "help-value-converted",
-                "helpText": "Valeur convertie.",
+                "id": "liter-value-converted",
+                "label": "Volume convertie",
+                "placeholder": "Volume convertie",
+                "ariaDescribedBy": "help-liter-value-converted",
+                "helpText": "Volume convertie.",
                 "readonly": true
             },
             {
                 "type": "select",
-                "id": "unit-converted",
+                "id": "liter-unit-converted",
                 "label": "Unité",
                 "options": this.getLitersOptions(),
+            },
+            {
+                "type": "button",
+                "id": "liter-convert",
+                "label": "Convertir",
+                "buttonType": "button"
+            }
+        ];
+
+        const _distanceFields = [
+            {
+                "type": "input",
+                "id": "distance-value-at-convert",
+                "label": "Distance à convertir",
+                "placeholder": "Distance à convertir",
+                "ariaDescribedBy": "help-distance-value-at-convert",
+                "helpText": "Distance à convertir.",
+            },
+            {
+                "type": "select",
+                "id": "distance-unit-at-convert",
+                "label": "Unité",
+                "options": this.getDistanceOptions(),
+            },
+            {
+                "type": "input",
+                "id": "distance-value-converted",
+                "label": "Distance convertie",
+                "placeholder": "Distance convertie",
+                "ariaDescribedBy": "help-distance-value-converted",
+                "helpText": "Distance convertie.",
+                "readonly": true
+            },
+            {
+                "type": "select",
+                "id": "distance-unit-converted",
+                "label": "Unité",
+                "options": this.getDistanceOptions(),
+            },
+            {
+                "type": "button",
+                "id": "distance-convert",
+                "label": "Convertir",
+                "buttonType": "button"
+            }
+        ];
+        
+        const _weightFields = [
+            {
+                "type": "input",
+                "id": "weight-value-at-convert",
+                "label": "Masse à convertir",
+                "placeholder": "Masse à convertir",
+                "ariaDescribedBy": "help-weight-value-at-convert",
+                "helpText": "Masse à convertir.",
+            },
+            {
+                "type": "select",
+                "id": "weight-unit-at-convert",
+                "label": "Unité",
+                "options": this.getWeightOptions(),
+            },
+            {
+                "type": "input",
+                "id": "weight-value-converted",
+                "label": "Masse convertie",
+                "placeholder": "Masse convertie",
+                "ariaDescribedBy": "help-weight-value-converted",
+                "helpText": "Masse convertie.",
+                "readonly": true
+            },
+            {
+                "type": "select",
+                "id": "weight-unit-converted",
+                "label": "Unité",
+                "options": this.getWeightOptions(),
+            },
+            {
+                "type": "button",
+                "id": "weight-convert",
+                "label": "Convertir",
+                "buttonType": "button"
+            }
+        ];
+
+        const _fields = [
+            {
+                "convertFields": _literFields
+            },
+            {
+                "convertFields": _distanceFields
+            },
+            {
+                "convertFields": _weightFields
             }
         ];
 
@@ -36,10 +130,6 @@ class Converters {
             "title": "Convertisseurs",
             "description": "Convertisseurs permettant la convertion des litres, des kilogrammes ainsi que des volumes.",
             "fields": _fields,
-            "button": {
-                "id": "convert",
-                "label": "Convertir"
-            }
         }
     }
 

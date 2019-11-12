@@ -1,4 +1,5 @@
 const render = new Render();
+const utils = new Utils();
 
 /**
  * Internal function use to hydrate and render the reverse template.
@@ -22,6 +23,34 @@ function _hydrateAndRenderBreadcrumbTemplate() {
 }
 
 /**
+ * Convert the unit into another unit.
+ * 
+ * @param {string} valueId 
+ *  Id of the field who contains the value at convert.
+ * @param {string} initialUnitId 
+ *  Id of the initial unit at convert into another unit.
+ * @param {string} targetUnitId 
+ *  Id of the target unit.
+ * @param {string} valueConvertedId 
+ *  Id of the field who contains the value converted.
+ */
+function _convertUnit(valueId, initialUnitId, targetUnitId, valueConvertedId) {
+    const value = parseFloat(utils.getHtmlNodeByIdName(valueId).val());
+    const initialUnit = parseFloat(utils.getHtmlNodeByIdName(initialUnitId).val());
+    const targetUnit = parseFloat(utils.getHtmlNodeByIdName(targetUnitId).val());
+
+    if (value != "" && initialUnit != "" && targetUnit != "") {
+        const valueConverted  = new Physics().convert(
+            value,
+            initialUnit,
+            targetUnit
+        );
+        
+        utils.getHtmlNodeByIdName(valueConvertedId).val(valueConverted);
+    }
+}
+
+/**
  * Function call after the page loading.
  * 
  * @see Utils.createBreadcrumb
@@ -30,23 +59,30 @@ $(document).ready(function() {
     _hydrateAndRenderBodyTemplate();
     _hydrateAndRenderBreadcrumbTemplate();
     
-    /**
-     * Get the value at convert, his default unit and the target unit,
-     * then convert eh result and display it on the second input flag as readonly.
-     */
-    $("#convert").on("click", function() {
-        const value = parseFloat($("#value-at-convert").val());
-        const initialUnit = $("#unit-at-convert").val();
-        const targetUnit = $("#unit-converted").val();
-
-        if (value != "" && initialUnit != "" && targetUnit != "") {
-            const valueConverted  = new Physics().convert(
-                value,
-                initialUnit,
-                targetUnit
-            );
-            
-            $('#value-converted').val(valueConverted);
-        }
-    }); // #theorem_execution.on
+    $("#liter-convert").on("click", function() {
+        _convertUnit(
+            'liter-value-at-convert',
+            'liter-unit-at-convert', 
+            'liter-unit-converted', 
+            'liter-value-converted'
+        );
+    }); // #liter-convert.on
+    
+    $("#distance-convert").on("click", function() {
+        _convertUnit(
+            'distance-value-at-convert',
+            'distance-unit-at-convert', 
+            'distance-unit-converted', 
+            'distance-value-converted'
+        );
+    }); // #distance-convert.on
+    
+    $("#weight-convert").on("click", function() {
+        _convertUnit(
+            'weight-value-at-convert',
+            'weight-unit-at-convert', 
+            'weight-unit-converted', 
+            'weight-value-converted'
+        );
+    }); // #weight-convert.on
 }); // document.ready

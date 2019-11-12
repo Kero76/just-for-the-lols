@@ -22,7 +22,6 @@ class Physics {
      *  A number which represent the value for the targetUnit.
      */
     convert(value, initialUnit, targetUnit) {
-        console.log(`${value} ${initialUnit} ${targetUnit}`)
         return (value * initialUnit) / targetUnit;
     }
 }
