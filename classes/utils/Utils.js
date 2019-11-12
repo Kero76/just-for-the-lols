@@ -91,4 +91,44 @@ class Utils {
         const $breadcrumbDiv = $(`#${$breadcrumbDivId}`);
         $breadcrumbDiv.append(breadcrumb);
     }
+
+    /**
+     * Get the html element by his id.
+     * 
+     * @param {string} idName 
+     *  Identifier of the html element.
+     * @returns
+     *  The node element.
+     */
+    getHtmlNodeByIdName(idName) {
+        return this._getHtmlNodeByType('#', idName);
+    }
+
+    /**
+     * Get the html element by their class names.
+     * 
+     * @param {string} className 
+     *  Class name of the html element.
+     * @returns 
+     *  The node element.
+     */
+    getHtmlNodeByClassName(className) {
+        return this._getHtmlNodeByType('.', className);
+    }
+
+    /**
+     * Get the html element by his type and his identifier.
+     *  
+     * @param {char} type 
+     *  Type of the html node like '.' for class or '#' for id.
+     * @param {string} identifier 
+     *  Identifier name of the element html required.
+     * @returns
+     *  The node element.
+     */
+    _getHtmlNodeByType(type, identifier) {
+        return (identifier.charAt(0) === type) 
+            ? $(identifier)
+            : $(`#${identifier}`);
+    }
 }

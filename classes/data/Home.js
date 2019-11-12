@@ -25,6 +25,13 @@ class Home {
                 "link": "views/maths/gcd/gcd.html"
             }
         ];
+        // Physical subjects 
+        const _physicalSubjects = [
+            {
+                "name": "Convertisseurs",
+                "link": "views/physics/converters/converters.html"
+            }
+        ];
     
         // Categories
         const _categories = [
@@ -39,6 +46,12 @@ class Home {
                 "id": "mathematical",
                 "subjects": _mathematicalSubjects,
                 "size": _mathematicalSubjects.length
+            },
+            {
+                "name": "Physiques",
+                "id": "physical",
+                "subjects": _physicalSubjects,
+                "size": _physicalSubjects.length
             }
         ];
     
