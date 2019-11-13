@@ -38,7 +38,7 @@ class Mathematics {
      * @param {number} opB 
      *  Seconde operande of the operation.
      * @returns 
-     *  The ggreatest common divisor between the operand A et operand B. 
+     *  The greatest common divisor between the operand A et operand B. 
      */
     euclideanAlgorithm(a, b) {
         var opA = a;
@@ -52,5 +52,19 @@ class Mathematics {
         }
 
         return(opA);
+    }
+
+    /**
+     * Get the Least Common Multiple of two numbers.
+     * 
+     * @param {number} a 
+     *  A number.
+     * @param {number} b 
+     *  Another number.
+     * @returns 
+     *  The least common multiple between a and b.
+     */
+    lcmAlgorithm(a, b) {
+        return Math.abs((a * b)/ this.euclideanAlgorithm(a, b));
     }
 }

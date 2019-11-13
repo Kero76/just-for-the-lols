@@ -5,9 +5,9 @@ const render = new Render();
  * Internal function use to hydrate and render the reverse template.
  */
 function _hydrateAndRenderBodyTemplate() {
-    const reverse = new Reverse();
+    const lcm = new Lcm();
 
-    render.renderTemplate('body-template', reverse.data, 'body-content');
+    render.renderTemplate('body-template', lcm.data, 'body-content');
 };
 
 /**
@@ -15,9 +15,9 @@ function _hydrateAndRenderBodyTemplate() {
  */
 function _hydrateAndRenderBreadcrumbTemplate() {
     const breadcrumb = new BreadCrumb(
-        ['Hub', 'Lettres', 'Renverseur'], 
-        ['../../../index.html', '', 'reverse.html'],
-        ['before-icon-hub', 'before-icon-letters', '']
+        ['Hub', 'Mathématiques', 'PPCM'], 
+        ['../../../index.html', '', 'lcm.html'],
+        ['before-icon-hub', 'before-icon-mathematics', '']
     );
     
     render.renderTemplate('breadcrumb-template', breadcrumb.data, 'breadcrumb-content');
@@ -51,19 +51,27 @@ $(document).ready(function() {
     _hydrateAndRenderHeaderTemplate();
     _hydrateAndRenderBreadcrumbTemplate();
     _hydrateAndRenderFooterTemplate();
-
+    
     /**
-     * Get the content of the text and reverse it on alert.
+     * Get the content of all fields, then execute the Pythagorean theorem.
      */
-    $('#reverse-text').on('click', function() {
-        const text = $('#text').val();
+    $("#ppcm-execution").on("click", function() {
+        const integer1 = parseInt($("#integer1").val());
+        const integer2 = parseInt($("#integer2").val());
 
-        if (text != "") {
-            const result = new Word().reverse(text);
-            const $textarea = $('#alert-result > textarea'); 
-            $textarea.text('');
-            $textarea.text(result);
+        if (integer1 !== NaN && integer2 !== NaN) {
+            const result  = new Mathematics().lcmAlgorithm(
+                integer1,
+                integer2
+            );
+            
+            utils.showResult(
+                'alert-result', 
+                result, 
+                [`Le PPCM(${integer1}, ${integer2}) est ${result}.`, 'Veuillez entrer des entiers uniquement'], 
+                ['success', 'danger']
+            );
         }
-    }); // #reverse-text.on 
+    }); // #theorem_execution.on
 }); // document.ready
 
