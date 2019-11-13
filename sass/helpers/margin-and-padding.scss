@@ -14,7 +14,7 @@ $targets: (
 @each $target in $targets {
     @each $direction in $directions {
         @for $i from 0 to 9 {
-            @if $targets == 'margin' {
+            @if $target == 'margin' {
                 .mar-#{$direction}-#{$i}x {
                     margin-#{$direction}: $gl-margin * $i;
                 }
