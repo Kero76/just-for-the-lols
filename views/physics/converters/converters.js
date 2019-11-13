@@ -16,10 +16,29 @@ function _hydrateAndRenderBodyTemplate() {
 function _hydrateAndRenderBreadcrumbTemplate() {
     const breadcrumb = new BreadCrumb(
         ['Hub', 'Physiques', 'Convertisseurs'], 
-        ['../../../index.html', '', 'converters.html']
+        ['../../../index.html', '', 'converters.html'],
+        ['before-icon-hub', 'before-icon-physics', '']
     );
     
     render.renderTemplate('breadcrumb-template', breadcrumb.data, 'breadcrumb-content');
+}
+
+/**
+ * Internal function use to hydrate and render the header.
+ */
+function _hydrateAndRenderHeaderTemplate() {
+    const header = new Header();
+
+    render.renderTemplate('header-template', header.data, 'header-content');
+}
+
+/**
+ * Internal function use to hydrate and render the footer.
+ */
+function _hydrateAndRenderFooterTemplate() {
+    const footer = new Footer();
+    
+    render.renderTemplate('footer-template', footer.data, 'footer-content');
 }
 
 /**
@@ -57,7 +76,9 @@ function _convertUnit(valueId, initialUnitId, targetUnitId, valueConvertedId) {
  */
 $(document).ready(function() {
     _hydrateAndRenderBodyTemplate();
+    _hydrateAndRenderHeaderTemplate();
     _hydrateAndRenderBreadcrumbTemplate();
+    _hydrateAndRenderFooterTemplate();
     
     $("#liter-convert").on("click", function() {
         _convertUnit(
