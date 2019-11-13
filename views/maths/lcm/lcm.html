@@ -1,23 +1,32 @@
 <!DOCTYPE html>
 <html lng="fr">
     <head>
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
+        <link rel="stylesheet" href="../../../css/style.css" />
+
         <title>PPCM</title>
     </head>
-    
+
     <body>
+        <!-- Header template. -->
+        <header id="header-content" class="container"></header>
+
         <!-- Breadcrumb template. -->
         <header id="breadcrumb-content" class="container"></header>
+        <hr />
 
         <!-- Content template. -->
-        <section id="body-content" class="container">
-            
-        </section>
+        <section id="body-content" class="container"></section>
+
+        <!-- Footer template. -->
+        <hr />
+        <footer id="footer-content" class="container"></footer>
     </body>
 
     <!-- Librairies scripts -->
@@ -51,7 +60,7 @@
                     {{/for}}
                     </select>
                 {{else type=="button"}}
-                    <button id="{{:id}}" type="{{:buttonType}}" class="btn btn-primary">
+                    <button id="{{:id}}" type="{{:buttonType}}" class="btn btn-primary mar-top-3x btn-heigth-40x">
                         {{:label}}
                     </button>
                 {{else}}
@@ -65,18 +74,19 @@
         </article>
     </script>
 
+    <!-- Includes templates -->
     <!-- BreadCrumb template -->
     <script id="breadcrumb-template" type="text/x-jsrender">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
             {{for items}}
                 {{if isActive}}
-                <li class="breadcrumb-item active" aria-current="page">
-                    {{:label}}
+                <li class="breadcrumb-item {{:iconClass}} active" aria-current="page">
+                    <span class="{{:iconClass}}">{{:label}}</span>
                 </li>
                 {{else}}
                 <li class="breadcrumb-item">
-                    <a href="{{:url}}">{{:label}}</a>
+                    <a href="{{:url}}"><span class="{{:iconClass}}">{{:label}}</span></a>
                 </li>
                 {{/if}}
             {{/for}}
@@ -84,12 +94,40 @@
         </nav>
     </script>
 
+    <!-- Header template. -->
+    <script id="header-template" type="text/x-jsrender">
+        <div class="row">
+            <h1 class="col">{{:projectName}}</h1>
+        </div>
+    </script>
+
+    <!-- Footer template -->
+    <script id="footer-template" type="text/x-jsrender">
+        <div class="text-center">
+            <p>
+                {{:projectName}} &copy;,
+                {{:releaseYear}} - {{:currentYear}},
+                {{:developer.name}} aka {{:developer.nickname}},  
+                Tous droits réservés
+            </p>
+            <ul class="list-inline">
+                {{for socialLinks}}
+                <li class="list-inline-item">
+                    <i class="fa fa-{{:icon}}"></i> <a href={{:link}} target="{{:target}}">{{:name}}</a>
+                </li>
+                {{/for}}
+            </ul>
+        </div>
+    </script>
+
     <!-- Local lib and files import. -->
     <script src="../../../appConstant.js"></script>
     <script src="../../../classes/utils/Utils.js"></script>
-    <script src="../../../classes/data/BreadCrumb.js"></script>
-    <script src="../../../classes/data/Lcm.js"></script>
-    <script src="../../../classes/views/Render.js"></script>
-    <script src="../../../classes/Mathematics.js"></script>
+    <script src="../../../classes/utils/Render.js"></script>
+    <script src="../../../classes/data/includes/Header.js"></script>
+    <script src="../../../classes/data/includes/BreadCrumb.js"></script>
+    <script src="../../../classes/data/includes/Footer.js"></script>
+    <script src="../../../classes/data/views/maths/Lcm.js"></script>
+    <script src="../../../classes/logics/Mathematics.js"></script>
     <script src="lcm.js"></script>
 </html>
