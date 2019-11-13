@@ -271,19 +271,23 @@
 
 .before-icon-hub::before {
   content: "";
-  font-family: "FontAwesome"; }
+  font-family: "FontAwesome";
+  padding-right: 5px; }
 
 .before-icon-letters::before {
   content: "";
-  font-family: "FontAwesome"; }
+  font-family: "FontAwesome";
+  padding-right: 5px; }
 
 .before-icon-mathematics::before {
   content: "";
-  font-family: "FontAwesome"; }
+  font-family: "FontAwesome";
+  padding-right: 5px; }
 
 .before-icon-physics::before {
   content: "";
-  font-family: "FontAwesome"; }
+  font-family: "FontAwesome";
+  padding-right: 5px; }
 
 .badge-primary {
   font-size: 1.5rem; }

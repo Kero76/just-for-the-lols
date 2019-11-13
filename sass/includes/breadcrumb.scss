@@ -8,24 +8,18 @@ $book-code: '\f02d';
 $calculator-code: '\f1ec';
 $flask-code: '\f0c3';
 
-.before-icon-hub::before {
-    content: "#{$home-code}";
-    font-family: $font-awesome;
-}
+$iconCodes: 
+'hub' $home-code, 
+'letters' $book-code, 
+'mathematics' $calculator-code, 
+'physics' $flask-code;
 
-.before-icon-letters::before {
-    content: "#{$book-code}";
-    font-family: $font-awesome;
-}
-
-.before-icon-mathematics::before {
-    content: "#{$calculator-code}";
-    font-family: $font-awesome;
-}
-
-.before-icon-physics::before {
-    content: "#{$flask-code}";
-    font-family: $font-awesome;
+@each $tuple in $iconCodes {
+    .before-icon-#{nth($tuple, 1)}::before {
+        content: "#{nth($tuple, 2)}";
+        font-family: $font-awesome;
+        padding-right: $gl-padding / 2;
+    }
 }
 
 // 

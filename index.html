@@ -63,12 +63,12 @@
             <ol class="breadcrumb">
             {{for items}}
                 {{if isActive}}
-                <li class="breadcrumb-item {{:iconClass}} active" aria-current="page">
-                    {{:label}}
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span class="{{:iconClass}}">{{:label}}</span>
                 </li>
                 {{else}}
-                <li class="breadcrumb-item {{:iconClass}}">
-                    <a href="{{:url}}">{{:label}}</a>
+                <li class="breadcrumb-item">
+                    <a href="{{:url}}"><span class="{{:iconClass}}">{{:label}}</span></a>
                 </li>
                 {{/if}}
             {{/for}}
