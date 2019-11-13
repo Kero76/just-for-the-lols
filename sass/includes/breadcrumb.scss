@@ -1,6 +1,8 @@
+//
+// Icons in breadcrumb.
+//
 $font-awesome: "FontAwesome";
 
-// List of all codes.
 $home-code: '\f015';
 $book-code: '\f02d';
 $calculator-code: '\f1ec';
@@ -24,4 +26,29 @@ $flask-code: '\f0c3';
 .before-icon-physics::before {
     content: "#{$flask-code}";
     font-family: $font-awesome;
+}
+
+// 
+// Badges styles 
+// 
+.badge-primary {
+    font-size: 1.5rem;
+}
+
+$subjects: (
+    'letters', 'mathematical', 'physical',
+);
+@each $subject in $subjects {
+    #badge-#{$subject} {
+        @if ($subject == 'letters') {
+            background-color: rgb(255, 247, 163);
+        } @else if ($subject == 'mathematical') {
+            background-color: rgb(163, 226, 255);
+        } @else {
+            background-color: rgb(255, 166, 163);
+        }
+
+        color: white;
+        font-size: 1.2rem;
+    }
 }
