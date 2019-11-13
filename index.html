@@ -10,12 +10,22 @@
         <title>Hub</title>
     </head>
 
-    <body>
-        <!-- Breadcrumb template. -->
-        <header id="breadcrumb-content" class="container"></header>
+    <body class="container">
+        <div>
+            <header class="row">
+                <h1 class="col">Just 4 The Lols Projects</h1>
+            </header>
 
-        <!-- Content template. -->
-        <section id="body-content" class="container"></section>
+            <!-- Breadcrumb template. -->
+            <header id="breadcrumb-content" class="container"></header>
+
+            <!-- Content template. -->
+            <section id="body-content" class="container"></section>
+
+            <!-- Footer template -->
+            <hr />
+            <footer id="footer-content" class="container"></footer>
+        </div>
     </body>
 
     <!-- Librairies scripts -->
@@ -64,10 +74,29 @@
         </nav>
     </script>
 
+    <script id="footer-template" type="text/x-jsrender">
+        <div class="text-center">
+            <p>
+                {{:projectName}} &copy;,
+                {{:releaseYear}} - {{:currentYear}},
+                {{:developer.name}} aka {{:developer.nickname}},  
+                Tous droits réservés
+            </p>
+            <ul class="list-inline">
+                {{for socialLinks}}
+                <li class="list-inline-item">
+                    <i class="fa fa-{{:icon}}"></i> <a href={{:link}} target="{{:target}}">{{:name}}</a>
+                </li>
+                {{/for}}
+            </ul>
+        </div>
+    </script>
+
     <!-- Import local libs and files. -->
     <script src="classes/utils/Utils.js"></script>
     <script src="classes/data/Home.js"></script>
     <script src="classes/data/BreadCrumb.js"></script>
+    <script src="classes/data/includes/Footer.js"></script>
     <script src="classes/views/Render.js"></script>
     <script src="index.js"></script>
 </html>

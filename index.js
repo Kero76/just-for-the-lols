@@ -22,10 +22,17 @@ function _hydrateAndRenderBreadcrumbTemplate() {
     render.renderTemplate('breadcrumb-template', breadcrumb.data, 'breadcrumb-content');
 }
 
+function _hydrateAndRenderFooterTemplate() {
+    const footer = new Footer();
+    
+    render.renderTemplate('footer-template', footer.data, 'footer-content');
+}
+
 /**
  * Execute the method to hydrate and render all templates.
  */
 $(document).ready(function() {
     _hydrateAndRenderHomeTemplate();
     _hydrateAndRenderBreadcrumbTemplate();
+    _hydrateAndRenderFooterTemplate();
 }); // document.ready
