@@ -16,7 +16,8 @@ function _hydrateAndRenderHomeTemplate() {
 function _hydrateAndRenderBreadcrumbTemplate() {
     const breadcrumb = new BreadCrumb(
         ['Hub'],
-        ['index.html']
+        ['index.html'],
+        ['before-icon-hub']
     );
     
     render.renderTemplate('breadcrumb-template', breadcrumb.data, 'breadcrumb-content');

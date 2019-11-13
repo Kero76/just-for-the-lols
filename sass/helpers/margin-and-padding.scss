@@ -1,0 +1,45 @@
+@import "variables.scss";
+
+// 
+// Utils padding and margin class.
+// 
+$directions: (
+    'top', 'right', 'bottom', 'left'
+);
+
+$targets: (
+    'margin', 'padding'
+);
+
+@each $target in $targets {
+    @each $direction in $directions {
+        @for $i from 0 to 9 {
+            @if $targets == 'margin' {
+                .mar-#{$direction}-#{$i}x {
+                    margin-#{$direction}: $gl-margin * $i;
+                }
+            } @else {
+                .pad-#{$direction}-#{$i}x {
+                    padding-#{$direction}: $gl-padding * $i;
+                }
+            }
+        }
+    }
+}
+
+@each $target in $targets {
+    @for $i from 0 to 9 {
+        @if $target == 'margin' {
+            .mar-all-#{$i}x {
+                margin: $gl-margin * $i;
+            }
+        } @else {
+            .pad-all-#{$i}x {
+                padding: $gl-padding * $i;
+            }
+        }
+    }
+}
+
+
+

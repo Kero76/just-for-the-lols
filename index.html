@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
+        <link rel="stylesheet" href="css/style.css" />
         <title>Hub</title>
     </head>
 
@@ -18,6 +19,7 @@
 
             <!-- Breadcrumb template. -->
             <header id="breadcrumb-content" class="container"></header>
+            <hr />
 
             <!-- Content template. -->
             <section id="body-content" class="container"></section>
@@ -42,7 +44,9 @@
 
         {{for categories sortBy="name"}}
         <article class="col-sm-12">
-            <h2>{{:name}} 
+            <h2>
+                <i class="fa fa-{{:icon}}"></i> 
+                {{:name}} 
                 <span id="badge-{{:id}}" class="badge badge-info badge-pill">{{:size}}</span>
             </h2>
 
@@ -61,11 +65,11 @@
             <ol class="breadcrumb">
             {{for items}}
                 {{if isActive}}
-                <li class="breadcrumb-item active" aria-current="page">
+                <li class="breadcrumb-item {{:iconClass}} active" aria-current="page">
                     {{:label}}
                 </li>
                 {{else}}
-                <li class="breadcrumb-item">
+                <li class="breadcrumb-item {{:iconClass}}">
                     <a href="{{:url}}">{{:label}}</a>
                 </li>
                 {{/if}}
@@ -94,9 +98,9 @@
 
     <!-- Import local libs and files. -->
     <script src="classes/utils/Utils.js"></script>
-    <script src="classes/data/Home.js"></script>
-    <script src="classes/data/BreadCrumb.js"></script>
+    <script src="classes/utils/Render.js"></script>
+    <script src="classes/data/views/Home.js"></script>
+    <script src="classes/data/includes/BreadCrumb.js"></script>
     <script src="classes/data/includes/Footer.js"></script>
-    <script src="classes/views/Render.js"></script>
     <script src="index.js"></script>
 </html>

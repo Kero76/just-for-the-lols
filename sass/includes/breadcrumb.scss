@@ -1,0 +1,27 @@
+$font-awesome: "FontAwesome";
+
+// List of all codes.
+$home-code: '\f015';
+$book-code: '\f02d';
+$calculator-code: '\f1ec';
+$flask-code: '\f0c3';
+
+.before-icon-hub::before {
+    content: "#{$home-code}";
+    font-family: $font-awesome;
+}
+
+.before-icon-letters::before {
+    content: "#{$book-code}";
+    font-family: $font-awesome;
+}
+
+.before-icon-mathematics::before {
+    content: "#{$calculator-code}";
+    font-family: $font-awesome;
+}
+
+.before-icon-physics::before {
+    content: "#{$flask-code}";
+    font-family: $font-awesome;
+}
