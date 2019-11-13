@@ -23,6 +23,18 @@ function _hydrateAndRenderBreadcrumbTemplate() {
     render.renderTemplate('breadcrumb-template', breadcrumb.data, 'breadcrumb-content');
 }
 
+/**
+ * Internal function use to hydrate and render the header.
+ */
+function _hydrateAndRenderHeaderTemplate() {
+    const header = new Header();
+
+    render.renderTemplate('header-template', header.data, 'header-content');
+}
+
+/**
+ * Internal function use to hydrate and render the footer.
+ */
 function _hydrateAndRenderFooterTemplate() {
     const footer = new Footer();
     
@@ -34,6 +46,7 @@ function _hydrateAndRenderFooterTemplate() {
  */
 $(document).ready(function() {
     _hydrateAndRenderHomeTemplate();
+    _hydrateAndRenderHeaderTemplate();
     _hydrateAndRenderBreadcrumbTemplate();
     _hydrateAndRenderFooterTemplate();
 }); // document.ready
