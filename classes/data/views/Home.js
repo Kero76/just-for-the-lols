@@ -11,7 +11,7 @@ class Home {
         const _letterSubjects = [
             {
                 "name": "Renverseur de texte",
-                "link": "views/letters/reverse/reverse.html"
+                "link": "views/letters/reverse/reverse.html",
             }
         ];
         // Mathematical subjects
@@ -43,19 +43,22 @@ class Home {
                 "name": "Lettres",
                 "id": "letters",
                 "subjects": _letterSubjects,
-                "size": _letterSubjects.length
+                "size": _letterSubjects.length,
+                "icon": "book"
             }, 
             {
                 "name": "Mathématiques",
                 "id": "mathematical",
                 "subjects": _mathematicalSubjects,
-                "size": _mathematicalSubjects.length
+                "size": _mathematicalSubjects.length,
+                "icon": "calculator"
             },
             {
                 "name": "Physiques",
                 "id": "physical",
                 "subjects": _physicalSubjects,
-                "size": _physicalSubjects.length
+                "size": _physicalSubjects.length,
+                "icon": "flask"
             }
         ];
     

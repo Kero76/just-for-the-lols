@@ -6,7 +6,7 @@ class Reverse {
                 "type": "textarea",
                 "id": "text",
                 "label": "Texte à renverser",
-                "row": 10,
+                "rows": 5,
                 "placeholder": "",
                 "ariaDescribedBy": "help-reverse-text",
                 "helpText": "Permet de lire le contenu du texte de la droite vers la gauche.",

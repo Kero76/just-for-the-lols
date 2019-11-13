@@ -1,0 +1,9 @@
+body.container {
+  padding: 10px;
+  background-color: #FFF; }
+
+body > div {
+  padding: 10px;
+  border: solid #ecece9 1px; }
+
+/*# sourceMappingURL=home.css.map */

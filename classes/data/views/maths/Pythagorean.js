@@ -9,7 +9,6 @@ class Pythagorean {
                 "placeholder": "Distance AB",
                 "ariaDescribedBy": "help-hypothenuse",
                 "helpText": "Distance entre A et B.",
-                "row": 0,
             },
             {
                 "type": "input",
@@ -18,7 +17,6 @@ class Pythagorean {
                 "placeholder": "Distance AC",
                 "ariaDescribedBy": "help-cathetus-1",
                 "helpText": "Distance entre A et C.",
-                "row": 0,
             },
             {
                 "type": "input",
@@ -27,7 +25,12 @@ class Pythagorean {
                 "placeholder": "Distance BC",
                 "ariaDescribedBy": "help-cathetus-2",
                 "helpText": "Distance entre B et C.",
-                "row": 0,
+            },
+            {
+                "type": "button",
+                "id": "theorem-execution",
+                "label": "Exécution du théorème",
+                "buttonType": "button"
             }
         ];
 
@@ -35,10 +38,6 @@ class Pythagorean {
             "title": "Théorème de Pythagore",
             "description": "AB² = AC² + BC².",
             "fields": _fields,
-            "button": {
-                "id": "theorem-execution",
-                "label": "Exécution"
-            }
         };
     }
 }
