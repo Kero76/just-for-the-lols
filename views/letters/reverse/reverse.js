@@ -16,10 +16,29 @@ function _hydrateAndRenderBodyTemplate() {
 function _hydrateAndRenderBreadcrumbTemplate() {
     const breadcrumb = new BreadCrumb(
         ['Hub', 'Lettres', 'Renverseur'], 
-        ['../../../index.html', '', 'reverse.html']
+        ['../../../index.html', '', 'reverse.html'],
+        ['before-icon-hub', 'before-icon-letters', '']
     );
     
     render.renderTemplate('breadcrumb-template', breadcrumb.data, 'breadcrumb-content');
+}
+
+/**
+ * Internal function use to hydrate and render the header.
+ */
+function _hydrateAndRenderHeaderTemplate() {
+    const header = new Header();
+
+    render.renderTemplate('header-template', header.data, 'header-content');
+}
+
+/**
+ * Internal function use to hydrate and render the footer.
+ */
+function _hydrateAndRenderFooterTemplate() {
+    const footer = new Footer();
+    
+    render.renderTemplate('footer-template', footer.data, 'footer-content');
 }
 
 /**
@@ -29,7 +48,9 @@ function _hydrateAndRenderBreadcrumbTemplate() {
  */
 $(document).ready(function() {
     _hydrateAndRenderBodyTemplate();
+    _hydrateAndRenderHeaderTemplate();
     _hydrateAndRenderBreadcrumbTemplate();
+    _hydrateAndRenderFooterTemplate();
 
     /**
      * Get the content of the text and reverse it on alert.
@@ -39,12 +60,9 @@ $(document).ready(function() {
 
         if (text != "") {
             const result = new Word().reverse(text);
-            utils.showResult(
-                'alert-result', 
-                (result != ""), 
-                [result], 
-                ['success']
-            );
+            const $textarea = $('#alert-result > textarea'); 
+            $textarea.text('');
+            $textarea.text(result);
         }
     }); // #reverse-text.on 
 }); // document.ready
