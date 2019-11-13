@@ -3,7 +3,8 @@
 @import "helpers/margin-and-padding";
 
 // Includes part styles.
-@import "includes/breadcrumb.scss";
+@import "includes/breadcrumb";
 
 // Specific pages styles.
 @import "pages/home";
+@import "pages/converters";
