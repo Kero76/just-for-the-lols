@@ -11,34 +11,41 @@ function _hydrateAndRenderBodyTemplate() {
 };
 
 /**
- * Internal function use to hydrate and render the breadcrumb.
+ * Function use to render all externals templates.
  */
-function _hydrateAndRenderBreadcrumbTemplate() {
+function _hydrateAndRenderExternalTemplates() {
+    const header = new Header();
+    const footer = new Footer();
     const breadcrumb = new BreadCrumb(
         ['Hub', 'Mathématiques', 'Pythagore'], 
         ['../../../index.html', '', 'gcd.html'],
         ['before-icon-hub', 'before-icon-mathematics', '']
     );
-    
-    render.renderTemplate('breadcrumb-template', breadcrumb.data, 'breadcrumb-content');
-}
 
-/**
- * Internal function use to hydrate and render the header.
- */
-function _hydrateAndRenderHeaderTemplate() {
-    const header = new Header();
+    const externalTemplatesPath = [
+        './../../../templates/includes/header.jsr',
+        './../../../templates/includes/breadcrumb.jsr',
+        './../../../templates/includes/footer.jsr',
+    ];
 
-    render.renderTemplate('header-template', header.data, 'header-content');
-}
+    const externalTemplatesData = [
+        header.data, 
+        breadcrumb.data,
+        footer.data
+    ];
 
-/**
- * Internal function use to hydrate and render the footer.
- */
-function _hydrateAndRenderFooterTemplate() {
-    const footer = new Footer();
-    
-    render.renderTemplate('footer-template', footer.data, 'footer-content');
+    const externalTemplatesTargetIds = [
+        'header-content',
+        'breadcrumb-content',
+        'footer-content'
+    ]
+
+    // Render the external templates.
+    render.renderExternalTemplates(
+        externalTemplatesPath, 
+        externalTemplatesData, 
+        externalTemplatesTargetIds
+    );
 }
 
 /**
@@ -48,9 +55,7 @@ function _hydrateAndRenderFooterTemplate() {
  */
 $(document).ready(function() {
     _hydrateAndRenderBodyTemplate();
-    _hydrateAndRenderHeaderTemplate();
-    _hydrateAndRenderBreadcrumbTemplate();
-    _hydrateAndRenderFooterTemplate();
+    _hydrateAndRenderExternalTemplates();
     
     /**
      * Get the content of all fields, then execute the Pythagorean theorem.
