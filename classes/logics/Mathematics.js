@@ -7,7 +7,7 @@ class Mathematics {
      * Default constructor of the class.
      */
     constructor() {
-        this.squareValue = 2;
+        this.square = 2;
     }
 
     /**
@@ -23,11 +23,43 @@ class Mathematics {
      *  A boolean to indicate if the triangle is right or not.
      */
     pythagoreanTheorem(hypothenuse, cathete1, cathete2) {
-        const squareHypothenuse = Math.pow(hypothenuse, this.squareValue);
-        const squareCathetuses = Math.pow(cathete1, this.squareValue) + 
-                                 Math.pow(cathete2, this.squareValue);
+        const squareHypothenuse = Math.pow(hypothenuse, this.square);
+        const squareCathetuses = Math.pow(cathete1, this.square) + 
+                                 Math.pow(cathete2, this.square);
 
         return (squareHypothenuse === squareCathetuses);
+    }
+
+    /**
+     * Compute the thirds side of a right triangle.
+     * 
+     * @param {number} hypothenuse 
+     *  Potential hypothenuse of the triangle.
+     * @param {number} cathete1 
+     *  First size of the triangle.
+     * @param {number} cathete2 
+     *  Seconde side of the triangle.
+     * @returns
+     *  The size of the third value of the right triangle.
+     */
+    pythagoreanTheoremConverse(hypothenuse, cathete1, cathete2) {
+        // Hypothenuse found, then compute a cathete size, so in other case compute the hypothenuse size
+        let res = 0;
+        if (!isNaN(hypothenuse) && hypothenuse != "") {
+            // First size is empty, so compute it then compute the second size.
+            if (!isNaN(cathete1) && cathete1 != "") {
+                const _cathete = Math.pow(hypothenuse, this.square) - Math.pow(cathete1, this.square);
+                res = Math.sqrt(_cathete);
+            } else {
+                const _cathete = Math.pow(hypothenuse, this.square) - Math.pow(cathete2, this.square);
+                res = Math.sqrt(_cathete);
+            }
+        } else {
+            const _hypothenuse = Math.pow(cathete1, this.square) + Math.pow(cathete2, this.square);
+            res = Math.sqrt(_hypothenuse);
+        }
+
+        return res;
     }
 
     /**
