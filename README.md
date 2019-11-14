@@ -15,9 +15,10 @@ The algorithm return the following result :
 
 ## Mathematics 
 
-### Pythagorean Algorithm
+### Pythagorean Algorithm and his converse
 
-You just enter the 3 size's side and the app return a message to indicate if the triangle is right or not.
+You just enter the 3 size's side and the app return a message to indicate if the triangle is right or not.  
+If you type only two side of the 3 possible side, the application compute the third size of the triangle and return the result.
 
 ### GCD (Greatest Common divisor)
 

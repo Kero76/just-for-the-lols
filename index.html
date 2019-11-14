@@ -8,6 +8,7 @@
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
         <link rel="stylesheet" href="css/style.css" />
+        
         <title>Hub</title>
     </head>
 
@@ -28,7 +29,7 @@
     </body>
 
     <!-- Librairies scripts -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsrender/1.0.5/jsrender.min.js" integrity="sha256-xqPIiYCGCnDO2BbZdPplAc1Rc5u+UHlQzMawCsWosEo=" crossorigin="anonymous"></script>
@@ -54,52 +55,6 @@
             </ul>
         </article>
         {{/for}}
-    </script>
-
-    <!-- Includes templates -->
-    <!-- BreadCrumb template -->
-    <script id="breadcrumb-template" type="text/x-jsrender">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-            {{for items}}
-                {{if isActive}}
-                <li class="breadcrumb-item active" aria-current="page">
-                    <span class="{{:iconClass}}">{{:label}}</span>
-                </li>
-                {{else}}
-                <li class="breadcrumb-item">
-                    <a href="{{:url}}"><span class="{{:iconClass}}">{{:label}}</span></a>
-                </li>
-                {{/if}}
-            {{/for}}
-            </ol>
-        </nav>
-    </script>
-
-    <!-- Header template. -->
-    <script id="header-template" type="text/x-jsrender">
-        <div class="row">
-            <h1 class="col">{{:projectName}}</h1>
-        </div>
-    </script>
-
-    <!-- Footer template -->
-    <script id="footer-template" type="text/x-jsrender">
-        <div class="text-center">
-            <p>
-                {{:projectName}} &copy;,
-                {{:releaseYear}} - {{:currentYear}},
-                {{:developer.name}} aka {{:developer.nickname}},  
-                Tous droits réservés
-            </p>
-            <ul class="list-inline">
-                {{for socialLinks}}
-                <li class="list-inline-item">
-                    <i class="fa fa-{{:icon}}"></i> <a href={{:link}} target="{{:target}}">{{:name}}</a>
-                </li>
-                {{/for}}
-            </ul>
-        </div>
     </script>
 
     <!-- Import local libs and files. -->
