@@ -1,0 +1,15 @@
+<div class="text-center">
+    <p>
+        {{:projectName}} &copy;,
+        {{:releaseYear}} - {{:currentYear}},
+        {{:developer.name}} aka {{:developer.nickname}},  
+        Tous droits réservés
+    </p>
+    <ul class="list-inline">
+        {{for socialLinks}}
+        <li class="list-inline-item">
+            <i class="fa fa-{{:icon}}"></i> <a href={{:link}} target="{{:target}}">{{:name}}</a>
+        </li>
+        {{/for}}
+    </ul>
+</div>
