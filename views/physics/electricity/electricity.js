@@ -56,20 +56,18 @@ function _hydrateAndRenderExternalTemplates() {
 $(document).ready(function() {
     _hydrateAndRenderBodyTemplate();
     _hydrateAndRenderExternalTemplates();
-    
+
+    // Get input node.
+    const $voltageInput = $(utils.getHtmlNodeByIdName('voltage-value'));
+    const $intensityInput = $(utils.getHtmlNodeByIdName('intensity-value'));
+    const $powerInput = $(utils.getHtmlNodeByIdName('power-value'));
+    const $resistanceInput = $(utils.getHtmlNodeByIdName('resistance-value'));
+
     $("#compute-result").on("click", function() {
-        const voltage = parseFloat(
-            $(utils.getHtmlNodeByIdName('voltage-value')).val()
-        );
-        const intensity = parseFloat(
-            $(utils.getHtmlNodeByIdName('intensity-value')).val()
-        );
-        const power = parseFloat(
-            $(utils.getHtmlNodeByIdName('power-value')).val()
-        );
-        const resistance = parseFloat(
-            $(utils.getHtmlNodeByIdName('resistance-value')).val()
-        );
+        const voltage = parseFloat($voltageInput.val());
+        const intensity = parseFloat($intensityInput.val());
+        const power = parseFloat($powerInput.val());
+        const resistance = parseFloat($resistanceInput.val());
 
         const isValidFields = [
             !isNaN(voltage),
@@ -97,6 +95,33 @@ $(document).ready(function() {
             const result = new Physics().computeElectricity(
                 voltage, intensity, power, resistance
             );
+
+            // Fill the fields with the result compute.
+            result.forEach(element => {
+                if (element.name === 'voltage') {
+                    $voltageInput.val(element.value);
+                }
+    
+                if (element.name === 'intensity') {
+                    $intensityInput.val(element.value);
+                }
+    
+                if (element.name === 'power') {
+                    $powerInput.val(element.value);
+                }
+    
+                if (element.name === 'resistance') {
+                    $resistanceInput.val(element.value);
+                }
+            }); // result.forEach
         }
-    }); // #compute-result.on    
+    }); // #compute-result.on
+
+    // Clear the content of all fields.
+    $('#clear-result').on('click', function() {
+        $voltageInput.val('');
+        $intensityInput.val('');
+        $powerInput.val('');
+        $resistanceInput.val('');
+    }); // #clear-result.on
 }); // document.ready

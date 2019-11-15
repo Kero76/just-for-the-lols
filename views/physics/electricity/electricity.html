@@ -58,13 +58,19 @@
                         <option value="{{:value}}">{{:symbol}}</option>
                     {{/for}}
                     </select>
-                {{else type=="button"}}
-                    <button id="{{:id}}" type="{{:buttonType}}" class="btn btn-primary mar-top-3x btn-heigth-40x">
-                        {{:label}}
-                    </button>
                 {{else}}
                     <p>Le champ souhaité n'est pas supporté par l'application, merci de contacter le responsable pour qu'il intègre ce nouveau type de champ.</p>
                 {{/if}}
+                </div>
+            {{/for}}
+            </div>
+
+            <div class="row">
+            {{for buttons}} 
+                <div class="form-group col-sm-1">
+                    <button id="{{:id}}" type="{{:buttonType}}" class="{{:classes}}">
+                        {{:label}}
+                    </button>
                 </div>
             {{/for}}
             </div>
