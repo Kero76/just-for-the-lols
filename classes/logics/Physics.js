@@ -25,12 +25,23 @@ class Physics {
         return (value * initialUnit) / targetUnit;
     }
 
-    
+    /**
+     * Compute the value of all fields thanks to 2 fields.
+     * 
+     * @param {number} voltage 
+     *  The voltage or NaN value.
+     * @param {number} intensity 
+     *  The intensity or NaN value.
+     * @param {number} power 
+     *  The power or NaN value.
+     * @param {number} resistance 
+     *  The resistance or NaN value.
+     */
     computeElectricity(voltage, intensity, power, resistance) {
-        const isValidVoltage = !isNaN(voltage);
-        const isValidIntensity = !isNaN(intensity);
-        const isValidPower = !isNaN(power);
-        const isValidResistance = !isNaN(resistance);
+        let isValidVoltage = !isNaN(voltage);
+        let isValidIntensity = !isNaN(intensity);
+        let isValidPower = !isNaN(power);
+        let isValidResistance = !isNaN(resistance);
 
         const returnValues = [
             {
@@ -62,11 +73,13 @@ class Physics {
                 }
                 
                 isValidVoltage = true;
+                voltage = element.value;
             }
 
             if (element.name === 'intensity' && !isValidIntensity) {
+
                 if (isValidPower && isValidVoltage) {
-                    this._computeIntensityWithPowerAndVoltage(power, voltage);
+                    element.value = this._computeIntensityWithPowerAndVoltage(power, voltage);
                 } else if (isValidVoltage && isValidResistance) {
                     element.value = this._computeIntensityWithVoltageAndResistance(voltage, resistance);
                 } else {
@@ -74,11 +87,12 @@ class Physics {
                 }
                 
                 isValidIntensity = true;
+                intensity = element.value;
             }
 
             if (element.name === 'power' && !isValidPower) {
                 if (isValidVoltage && isValidIntensity) {
-                    this._computePowerWithVoltageAndIntensity(voltage, intensity);
+                    element.value = this._computePowerWithVoltageAndIntensity(voltage, intensity);
                 } else if (isValidResistance && isValidIntensity) {
                     element.value = this._computePowerWithResistanceAndIntensity(resistance, intensity);
                 } else {
@@ -86,14 +100,18 @@ class Physics {
                 }
                 
                 isValidPower = true;
+                power = element.value;
             }
 
             if (element.name === 'resistance' && !isValidResistance) {
                 element.value = this._computeResistanceWithVoltageAndIntensity(voltage, intensity);
+
+                isValidResistance = true;
+                resistance = element.value;
             }
         });
 
-        console.log(returnValues);
+        return returnValues;
     }
 
     // Private functions //
