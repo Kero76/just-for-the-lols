@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="../../../css/style.css" />
+
+        <title>PGCD</title>
+    </head>
+
+    <body>
+        <!-- Header template. -->
+        <header id="header-content" class="container"></header>
+
+        <!-- Breadcrumb template. -->
+        <header id="breadcrumb-content" class="container"></header>
+        <hr />
+
+        <!-- Content template. -->
+        <section id="body-content" class="container"></section>
+
+        <!-- Footer template. -->
+        <hr />
+        <footer id="footer-content" class="container"></footer>
+    </body>
+
+    <!-- Librairies scripts -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsrender/1.0.5/jsrender.min.js" integrity="sha256-xqPIiYCGCnDO2BbZdPplAc1Rc5u+UHlQzMawCsWosEo=" crossorigin="anonymous"></script>
+
+    <!-- body-template. -->
+    <script id="body-template" type="text/x-jsrender">
+        <h1 class="col-sm-12">{{:title}}</h1>
+
+        <article class="col-sm-12">
+            <h2>{{:title}}</h2>
+            <p>{{:description}}</p>
+            
+            <div class="row">
+            {{for fields}} 
+                <div class="form-group col">
+                {{if type=="input"}}
+                    <label for="{{:id}}">{{:label}}</label>
+                    <input type="text" name="{{:id}}" id="{{:id}}" class="form-control" placeholder="{{:placeholder}}" aria-describedby="{{:ariaDescribedBy}}" {{if readonly}} readonly {{/if}}>
+                {{else type=="textarea"}}
+                    <label for="{{:id}}">{{:label}}</label>
+                    <textarea class="form-control rounded-0" id="{{:id}}" rows="{{:rows}}" aria-describedby="{{:ariaDescribedBy}}">{{:placeholder}}</textarea>
+                {{else type=="select"}}
+                    <label for="{{:id}}">{{:label}}</label>
+                    <select class="form-control" id="{{:id}}">
+                    {{for options}}
+                        <option value="{{:value}}">{{:symbol}}</option>
+                    {{/for}}
+                    </select>
+                {{else type=="button"}}
+                    <button id="{{:id}}" type="{{:buttonType}}" class="btn btn-primary mar-top-3x btn-heigth-40x">
+                        {{:label}}
+                    </button>
+                {{else}}
+                    <p>Le champ souhaité n'est pas supporté par l'application, merci de contacter le responsable pour qu'il intègre ce nouveau type de champ.</p>
+                {{/if}}
+                </div>
+            {{/for}}
+            </div>
+            
+            <div id="alert-result" class="mt-3"></div>
+        </article>
+    </script>
+
+    <!-- Local lib and files import. -->
+    <script src="../../../appConstant.js"></script>
+    <script src="../../../classes/utils/Utils.js"></script>
+    <script src="../../../classes/utils/Render.js"></script>
+    <script src="../../../classes/data/includes/Header.js"></script>
+    <script src="../../../classes/data/includes/BreadCrumb.js"></script>
+    <script src="../../../classes/data/includes/Footer.js"></script>
+    <script src="../../../classes/data/views/maths/Gcd.js"></script>
+    <script src="../../../classes/logics/Mathematics.js"></script>
+    <script src="gcd.js"></script>
+</html>

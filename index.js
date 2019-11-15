@@ -1,46 +1,57 @@
+const utils = new Utils();
+const render = new Render();
+
 /**
- * Function call after the page loading.
- * 
- * @see Utils.createBreadcrumb
+ * Internal function use to hydrate and render the home template.
  */
-$(document).ready(function() {
-    _fillMainBadgeCategory();
-    _fillBadgeCategories();
-    Utils.createBreadcrumb(
-        'breadcrumb', 
-        ['Hub'], 
+function _hydrateAndRenderHomeTemplate() {
+    const home = new Home();
+
+    render.renderTemplate('body-template', home.data, 'body-content');
+};
+
+/**
+ * Function use to render all externals templates.
+ */
+function _hydrateAndRenderExternalTemplates() {
+    const header = new Header();
+    const footer = new Footer();
+    const breadcrumb = new BreadCrumb(
+        ['Hub'],
         ['index.html'],
+        ['before-icon-hub']
     );
-}); // document.ready
 
-/**
- * Fill the content of the main badge of the title 'Category'.
- */
-function _fillMainBadgeCategory() {
-    const nbCategories = $('.container > article').length
-    const $badge = $('#badge-categories');
-    $badge.text(nbCategories);
-}
-
-/**
- * Fill the content of the badge for each categories found in app.
- */
-function _fillBadgeCategories() {
-    let subjectsId = [
-        'mathematical',
-        'letters',
+    const externalTemplatesPath = [
+        './templates/includes/header.jsr',
+        './templates/includes/breadcrumb.jsr',
+        './templates/includes/footer.jsr',
     ];
 
-    /**
-     * Loop on each subjects and for each subject, 
-     * we compute the number of elements and change the value found in the badge.
-     */
-    subjectsId.forEach(function(subject) {
-        const subjectSelector = '#subjects-' + subject;
-        const nbChildren = $(subjectSelector).children('li').length;
+    const externalTemplatesData = [
+        header.data, 
+        breadcrumb.data,
+        footer.data
+    ];
 
-        const badgeSelector = `#badge-${subject}`;
-        const $badge = $(badgeSelector);
-        $badge.text(nbChildren);
-    }); // subjectsId.forEach
+    const externalTemplatesTargetIds = [
+        'header-content',
+        'breadcrumb-content',
+        'footer-content'
+    ]
+
+    // Render the external templates.
+    render.renderExternalTemplates(
+        externalTemplatesPath, 
+        externalTemplatesData, 
+        externalTemplatesTargetIds
+    );
 }
+
+/**
+ * Execute the method to hydrate and render all templates.
+ */
+$(document).ready(function() {
+    _hydrateAndRenderHomeTemplate();
+    _hydrateAndRenderExternalTemplates();
+}); // document.ready
