@@ -34,6 +34,10 @@ class Home {
             {
                 "name": "Convertisseurs",
                 "link": "views/physics/converters/converters.html"
+            },
+            {
+                "name": "Calcul de formules électriques",
+                "link": "views/physics/electricity/electricity.html"
             }
         ];
     
