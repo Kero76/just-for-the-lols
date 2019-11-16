@@ -1,13 +1,14 @@
 const utils = new Utils();
 const render = new Render();
+const word = new Word();
 
 /**
  * Internal function use to hydrate and render the reverse template.
  */
 function _hydrateAndRenderBodyTemplate() {
-    // const reverse = new Reverse();
+    const palindrome = new Palindrome();
 
-    // render.renderTemplate('body-template', reverse.data, 'body-content');
+    render.renderTemplate('body-template', palindrome.data, 'body-content');
 };
 
 /**
@@ -60,14 +61,23 @@ $(document).ready(function() {
     /**
      * Get the content of the text and reverse it on alert.
      */
-    $('#reverse-text').on('click', function() {
-        const text = $('#text').val();
+    $('#palindrome-execution').on('click', function() {
+        const palindrome = $('#palindrome').val();
+        const $radioChecked = $('input:radio:checked');
+        const isCaseSensitive = ($radioChecked.val() === 'case-insensitive')
+            ? false
+            : true;
 
-        if (text != "") {
-            const result = new Word().reverse(text);
-            const $textarea = $('#alert-result > textarea'); 
-            $textarea.text('');
-            $textarea.text(result);
+        if (palindrome != "") {
+            const result = word.palindrome(palindrome, isCaseSensitive);
+            const reverse = word.reverse(palindrome);
+            
+            utils.showResult(
+                'alert-result', 
+                result, 
+                [`Le mot ${palindrome} est bien un palindrome.`, `Le mot ${palindrome} et son inverse ${reverse} ne sont pas des palindrome.`], 
+                ['success', 'danger']
+            );
         }
     }); // #reverse-text.on 
 }); // document.ready
