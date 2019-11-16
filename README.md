@@ -13,6 +13,13 @@ For example, if you type the following sentence :
 The algorithm return the following result : 
 > "? nairB si erehW" 
 
+### Is a Palindrome
+
+A simple algorihme to check if a text send in parameter is a palindrome.  
+As a reminder, a palindrom is a word that can be read indifferently from right to left as from left to right.  
+For example the string "kayak" can be read from left to right or from right to left.  
+Morevoer, the algorithm supports the case sensitive.
+
 ## Mathematics 
 
 ### Pythagorean Algorithm and his converse
@@ -30,6 +37,11 @@ You just enter the first and the second numbers to get the GCD.
 ### Converters 
 
 A converter to convert volumes, masses and distances into another unit.
+
+### Electricity
+
+A simple page to compute the *voltage*, the *intensity*, the *power* or the *resistance* in function of 2 of these 4 values.
+You just type 2 of the 4 value in the field and the app compute instantly the 2 other values.
 
 ## Technologies used in project 
 
