@@ -18,14 +18,24 @@ class Word {
      *  The text with all characters inversed. 
      */
     reverse(text) {
-        let reverseText = "";
-        let index = text.length - 1;
+        return text.split("").reverse().join("");
+    }
 
-        while (index !== -1) {
-            reverseText += text[index];
-            index--;
+    /**
+     * Check if the text is a palindrome.
+     * 
+     * @param {string} text 
+     *  The text to check if he's a palindrome.
+     * @param {boolean} isCaseSensitive
+     *  Specified is the palindrome is concern by the case sensitivity or not.
+     * @returns 
+     *  A boolean to indicate if the text is a palindrome or not.
+     */ 
+    palindrome(text, isCaseSensitive = false) {
+        if (!isCaseSensitive) {
+            text = text.toLocaleLowerCase();
         }
 
-        return reverseText;
+        return text === this.reverse(text);
     }
 }
