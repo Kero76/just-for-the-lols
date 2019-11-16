@@ -318,4 +318,5 @@ body > div {
 .btn-heigth-40x {
   height: 40px; }
 
-/*# sourceMappingURL=style.css.map */
+.radio-btn-mar-right {
+  margin-right: 5px; }

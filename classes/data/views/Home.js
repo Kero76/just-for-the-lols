@@ -11,7 +11,11 @@ class Home {
         const _letterSubjects = [
             {
                 "name": "Renverseur de texte",
-                "link": "views/letters/reverse/reverse.html",
+                "link": "views/letters/reverse/reverse.html"
+            },
+            {
+                "name": "Palindrome",
+                "link": "views/letters/palindrome/palindrome.html"
             }
         ];
         // Mathematical subjects

@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAAA,eAAgB;EACZ,MAAM,EAAE,IAAI",
-"sources": ["../../sass/pages/converters.scss"],
-"names": [],
-"file": "converters.css"
-}
