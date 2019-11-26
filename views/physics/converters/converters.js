@@ -1,4 +1,3 @@
-// const render = new Render();
 const utils = new Utils();
 
 /**

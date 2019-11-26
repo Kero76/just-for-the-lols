@@ -10,15 +10,12 @@ class Converters extends BaseTemplate {
      * 
      * @constructor
      * 
-     * @param {string} templateName
-     *  The complete path of the breadcrumb template.
-     * @param {string} parentBlock
-     *  The identifier of the HTML element where inserted the template.
+     * @see BaseTemplate
      * 
      * @since 1.0
      */
-    constructor(templateName = '#body-template', parentBlock = '#body-content') {
-        super(templateName, parentBlock);
+    constructor() {
+        super();
         const _literFields = [
             {
                 "type": "input",
