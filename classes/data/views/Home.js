@@ -1,12 +1,22 @@
 /**
- * Class Home who contains all data use in home template.
+ * @author Nicolas GILLE <nic.gille@gmail.com>
+ * @since 1.0
+ * @version 1.0
+ * @license MIT
  */
-class Home {
-
+class Home extends BaseTemplate {
     /**
-     * Constructor use to initialize the data use in template.
+     * Constructor of the Home class.
+     * 
+     * @constructor
+     * 
+     * @see BaseTemplate
+     * 
+     * @since 1.0
      */
     constructor() {
+        super();
+        
         // Letters subjects 
         const _letterSubjects = [
             {
