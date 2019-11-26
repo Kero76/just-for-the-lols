@@ -16,6 +16,7 @@ class Electricity extends BaseTemplate {
      */
     constructor() {
         super();
+        
         const _fields = [
             {
                 "type": "input",

@@ -16,6 +16,7 @@ class Converters extends BaseTemplate {
      */
     constructor() {
         super();
+        
         const _literFields = [
             {
                 "type": "input",
