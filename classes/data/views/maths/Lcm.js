@@ -1,5 +1,22 @@
-class Lcm {
+/**
+ * @author Nicolas GILLE <nic.gille@gmail.com>
+ * @since 1.0
+ * @version 1.0
+ * @license MIT
+ */
+class Lcm extends BaseTemplate {
+    /**
+     * Constructor of the Lcm class.
+     * 
+     * @constructor
+     * 
+     * @see BaseTemplate
+     * 
+     * @since 1.0
+     */
     constructor() {
+        super();
+        
         const _fields = [
             {
                 "type": "input",
