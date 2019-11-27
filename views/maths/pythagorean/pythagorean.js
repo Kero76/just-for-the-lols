@@ -28,7 +28,7 @@ function _hydrateAndRenderExternalTemplates() {
     );
     const breadcrumb = new BreadCrumb(
         ['Hub', 'Mathématiques', 'Pythagore'], 
-        ['../../../index.html', '', 'gcd.html'],
+        ['../../../index.html', '', 'pythagore.html'],
         ['before-icon-hub', 'before-icon-mathematics', ''],
         './../../../templates/includes/breadcrumb.jsr',
     );
