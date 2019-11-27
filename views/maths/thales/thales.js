@@ -70,8 +70,44 @@ $(document).ready(function() {
      * Get the content of all fields, then execute the Pythagorean theorem.
      */
     $("#theorem-execution").on("click", function() {
-        
+        const ad = parseFloat($('#ad').val());
+        const ae = parseFloat($('#ae').val());
+        const de = parseFloat($('#de').val());
+        const ab = parseFloat($('#ab').val());
+        const ac = parseFloat($('#ac').val());
+        const bc = parseFloat($('#bc').val());
+
+        const inputs = [
+            !isNaN(ad), !isNaN(ae), !isNaN(de),
+            !isNaN(ab), !isNaN(ac), !isNaN(bc)
+        ];
+
+        const filterFn = b => b;
+        if (inputs.filter(filterFn).length === 4) {
+            const res = mathematics.interceptTheorem(ad, ab, ae, ac, de, bc);
+
+            // Fill empty input and change background color of it to indicate the result.
+        } else if (inputs.filter(filterFn).length === 6) {
+            // Execute converse of the theorem
+        } else {
+            utils.showResult(
+                'alert-result', 
+                false, 
+                ['', `Veuillez renseigner 4 des 6 champs présents pour exécuter le théorème de Thalès et les 6 champs pour exécuter la réciproque.`], 
+                ['', 'danger']
+            );
+        }
     }); // #theorem_execution.on
+
+    // Clean fields on button click.
+    $('#clean-fields').on('click', function() {
+        $('#ad').val('');
+        $('#ae').val('');
+        $('#de').val('');
+        $('#ab').val('');
+        $('#ac').val('');
+        $('#bc').val('');
+    }); // #clean-fields.on
 }); // document.ready
 
 

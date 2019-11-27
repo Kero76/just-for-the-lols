@@ -58,7 +58,15 @@ class Thales extends BaseTemplate {
                 "type": "button",
                 "id": "theorem-execution",
                 "label": "Exécution du théorème",
-                "buttonType": "button"
+                "buttonType": "button",
+                "classes": "btn btn-primary mar-top-3x btn-heigth-40x"
+            },
+            {
+                "type": "button",
+                "id": "clean-fields",
+                "label": "Vider les champs",
+                "buttonType": "reset",
+                "classes": "btn btn-danger mar-top-3x btn-heigth-40x"
             }
         ];
 
