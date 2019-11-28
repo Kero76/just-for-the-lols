@@ -1,5 +1,22 @@
-class Reverse {
+/**
+ * @author Nicolas GILLE <nic.gille@gmail.com>
+ * @since 1.0
+ * @version 1.0
+ * @license MIT
+ */
+class Reverse extends BaseTemplate {
+    /**
+     * Constructor of the Reverse class.
+     * 
+     * @constructor
+     * 
+     * @see BaseTemplate
+     * 
+     * @since 1.0
+     */
     constructor() {
+        super();
+        
         // Contains all fields used in template.
         const _fields = [
             {

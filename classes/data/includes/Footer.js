@@ -1,5 +1,23 @@
+/**
+ * @author Nicolas GILLE <nic.gille@gmail.com>
+ * @since 1.0
+ * @version 1.0
+ * @license MIT
+ */
 class Footer {
-    constructor() {
+    /**
+     * Constructor of the Footer object. 
+     * 
+     * @constructor
+     * 
+     * @param {string} templateName 
+     *  Template path of the include template.
+     * @param {string} parentBlock 
+     *  Name of the HTML element where the footer is inserted.
+     * 
+     * @since 1.0
+     */
+    constructor(templateName, parentBlock = "#footer-content") {
         const _socialLinks = [
             {
                 "name": "Email",
@@ -21,6 +39,8 @@ class Footer {
             }
         ];
 
+        this.templateName = templateName;
+        this.parentBlock = parentBlock;
         this.data = {
             "projectName": "Just 4 the Lols Project",
             "releaseYear": "2019",

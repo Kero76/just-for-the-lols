@@ -1,5 +1,22 @@
-class Converters {
+/**
+ * @author Nicolas GILLE <nic.gille@gmail.com>
+ * @since 1.0
+ * @version 1.0
+ * @license MIT
+ */
+class Converters extends BaseTemplate {
+    /**
+     * Constructor of the Converters class.
+     * 
+     * @constructor
+     * 
+     * @see BaseTemplate
+     * 
+     * @since 1.0
+     */
     constructor() {
+        super();
+        
         const _literFields = [
             {
                 "type": "input",

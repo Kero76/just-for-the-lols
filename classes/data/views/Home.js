@@ -1,17 +1,31 @@
 /**
- * Class Home who contains all data use in home template.
+ * @author Nicolas GILLE <nic.gille@gmail.com>
+ * @since 1.0
+ * @version 1.0
+ * @license MIT
  */
-class Home {
-
+class Home extends BaseTemplate {
     /**
-     * Constructor use to initialize the data use in template.
+     * Constructor of the Home class.
+     * 
+     * @constructor
+     * 
+     * @see BaseTemplate
+     * 
+     * @since 1.0
      */
     constructor() {
+        super();
+        
         // Letters subjects 
         const _letterSubjects = [
             {
                 "name": "Renverseur de texte",
-                "link": "views/letters/reverse/reverse.html",
+                "link": "views/letters/reverse/reverse.html"
+            },
+            {
+                "name": "Palindrome",
+                "link": "views/letters/palindrome/palindrome.html"
             }
         ];
         // Mathematical subjects
@@ -19,6 +33,10 @@ class Home {
             {
                 "name": "Théorème de Pythagore",
                 "link": "views/maths/pythagorean/pythagorean.html"
+            },
+            {
+                "name": "Théorème de Thalès",
+                "link": "views/maths/thales/thales.html"
             },
             {
                 "name": "PGCD (Plus Grand Commun Diviseur)",
@@ -34,6 +52,10 @@ class Home {
             {
                 "name": "Convertisseurs",
                 "link": "views/physics/converters/converters.html"
+            },
+            {
+                "name": "Calcul de formules électriques",
+                "link": "views/physics/electricity/electricity.html"
             }
         ];
     

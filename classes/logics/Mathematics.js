@@ -1,10 +1,19 @@
 /**
  * Class who contains all elements relatives to the Mathematics sciences.
+ * 
+ * @author Nicolas GILLE <nic.gille@gmail.com>
+ * @since 1.0
+ * @version 1.0
+ * @license MIT
  */
 class Mathematics {
 
     /**
      * Default constructor of the class.
+     * 
+     * @constructor
+     * 
+     * @since 1.0
      */
     constructor() {
         this.square = 2;
@@ -21,6 +30,8 @@ class Mathematics {
      *  Seconde cathere of the potential right triangle.
      * @returns 
      *  A boolean to indicate if the triangle is right or not.
+     * 
+     * @since 1.0
      */
     pythagoreanTheorem(hypothenuse, cathete1, cathete2) {
         const squareHypothenuse = Math.pow(hypothenuse, this.square);
@@ -41,6 +52,8 @@ class Mathematics {
      *  Seconde side of the triangle.
      * @returns
      *  The size of the third value of the right triangle.
+     * 
+     * @since 1.0
      */
     pythagoreanTheoremConverse(hypothenuse, cathete1, cathete2) {
         // Hypothenuse found, then compute a cathete size, so in other case compute the hypothenuse size
@@ -63,6 +76,105 @@ class Mathematics {
     }
 
     /**
+     * Application of the Thales Theorem.
+     * 
+     * @param {number} ad 
+     *  Length of the segment AD.
+     * @param {number} ab 
+     *  Length of the segment AB.
+     * @param {number} ae
+     *  Length of the segment AE.
+     * @param {number} ac 
+     *  Length of the segment AC.
+     * @param {number} de 
+     *  Length of the segment DE.
+     * @param {number} bc 
+     *  Length of the segment BC.
+     * @returns 
+     *  An JSON object with the length of each segments expected.
+     * 
+     * @see _crossMultiplication
+     * 
+     * @since 1.0
+     */
+    interceptTheorem(ad, ab, ae, ac, de, bc) {
+        let _ad = isNaN(ad) ? 0 : ad;
+        let _ae = isNaN(ae) ? 0 : ae;
+        let _de = isNaN(de) ? 0 : de;
+        let _ab = isNaN(ab) ? 0 : ab;
+        let _ac = isNaN(ac) ? 0 : ac;
+        let _bc = isNaN(bc) ? 0 : bc;
+
+        // We search segment AD.
+        if (_ad === 0 && _ae !== 0 && _ac !== 0 && _ab !== 0) 
+            _ad = this._crossMultiplication(_ab, _ae, _ac);
+        else if (_ad === 0 && _de !== 0 && _bc !== 0 && _ab !== 0) 
+            _ad = this._crossMultiplication(_ab, _de, _bc);
+         
+        // We search segment AB.
+        if (_ab === 0 && _ae !== 0 && _ac !== 0 && _ad !== 0) 
+            _ab = this._crossMultiplication(_ad, _ac, _ae);
+        else if (_ab === 0 && _de !== 0 && _bc !== 0 && _ad !== 0) 
+            _ab = this._crossMultiplication(_ad, _bc, _de);
+         
+        // We search segment AE.
+        if (_ae === 0 && _ad !== 0 && _ab !== 0 && _ac !== 0) 
+            _ae = this._crossMultiplication(_ac, _ab, _ad);
+         else if (_ae === 0 && _de !== 0 && _bc !== 0 && _ac !== 0) 
+            _ae = this._crossMultiplication(_ac, _de, _bc);
+        
+        // We search segment AD.
+        if (_ac === 0 && _ad !== 0 && _ab !== 0 && _ae !== 0) 
+            _ac = this._crossMultiplication(_ae, _ab, _ad);
+        else if (_ac === 0 && _de !== 0 && _bc !== 0 && _ae !== 0) 
+            _ac = this._crossMultiplication(_ae, _bc, _de);
+                
+        // We search segment DE.
+        if (_de === 0 && _ad !== 0 && _ab !== 0 && _bc !== 0) 
+            _de = this._crossMultiplication(_bc, _ad, _ab);
+        else if (_de === 0 && _ae !== 0 && _ac !== 0 && _bc !== 0) 
+            _de = this._crossMultiplication(_bc, _ae, _ac);
+
+        // We search segment BC.
+        if (_bc === 0 && _ad !== 0 && _ab !== 0 && _de !== 0)
+            _bc = this._crossMultiplication(_de, _ab, _ad);
+        else if (_bc === 0 && _ae !== 0 && _ac !== 0 && _de !== 0)
+            _bc = this._crossMultiplication(_de, ac, _ae);
+        
+
+        return {
+            "ad": _ad,
+            "ab": _ab,
+            "ae": _ae,
+            "ac": _ac,
+            "de": _de,
+            "bc": _bc,
+        };
+    }
+
+    /**
+     * Indicate if the segment [DE] and [BC] are parallel or not.
+     * 
+     * @param {number} ad 
+     *  Length of segment AD.
+     * @param {number} ab 
+     *  Length of segment AB.
+     * @param {number} ae 
+     *  Length of segment AE.
+     * @param {number} ac 
+     *  Length of segment AC.
+     * @param {number} precision 
+     *  Precision of the result excepted.
+     * @returns 
+     *  A boolean to indicate if the segment [DE] and [BC] are parallel or not.
+     * 
+     * @since 1.0
+     */
+    interceptTheoremConverse(ad, ab, ae, ac, precision = 100) {
+        return (Math.round((ad / ab) * precision) / precision) === (Math.round((ae / ac) * precision) / precision);
+    }
+
+    /**
      * Euclidean algorithm to compute the gcd.
      * 
      * @param {number} opA 
@@ -71,6 +183,8 @@ class Mathematics {
      *  Seconde operande of the operation.
      * @returns 
      *  The greatest common divisor between the operand A et operand B. 
+     * 
+     * @since 1.0
      */
     euclideanAlgorithm(a, b) {
         var opA = a;
@@ -95,8 +209,33 @@ class Mathematics {
      *  Another number.
      * @returns 
      *  The least common multiple between a and b.
+     * 
+     * @since 1.0
      */
     lcmAlgorithm(a, b) {
         return Math.abs((a * b)/ this.euclideanAlgorithm(a, b));
+    }
+
+    // Private functions //
+    /**
+     * Compute the cross multiplication.
+     * 
+     * @private 
+     * 
+     * @param {number} a 
+     *  First operand to multiply with b.
+     * @param {number} b 
+     *  Second operand to multiply with a.
+     * @param {number} c 
+     *  Third operand to divide result of a * b.
+     * @returns 
+     *  The fourth operand of the cross multiplication.
+     * 
+     * @see interceptTheorem
+     * 
+     * @since 1.0
+     */ 
+    _crossMultiplication(a, b, c) {
+        return (a * b) / c;
     }
 }

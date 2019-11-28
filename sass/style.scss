@@ -1,6 +1,7 @@
 // Helpers.
 @import "helpers/variables";
 @import "helpers/margin-and-padding";
+@import "helpers/inputs";
 
 // Includes part styles.
 @import "includes/breadcrumb";
@@ -8,3 +9,4 @@
 // Specific pages styles.
 @import "pages/home";
 @import "pages/converters";
+@import "pages/palindrome";
