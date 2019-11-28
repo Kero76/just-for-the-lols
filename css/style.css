@@ -269,6 +269,9 @@
 .pad-all-8x {
   padding: 80px; }
 
+.computed-response {
+  background-color: #faffad; }
+
 .before-icon-hub::before {
   content: "";
   font-family: "FontAwesome";

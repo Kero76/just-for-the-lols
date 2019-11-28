@@ -70,24 +70,55 @@ $(document).ready(function() {
      * Get the content of all fields, then execute the Pythagorean theorem.
      */
     $("#theorem-execution").on("click", function() {
-        const ad = parseFloat($('#ad').val());
-        const ae = parseFloat($('#ae').val());
-        const de = parseFloat($('#de').val());
-        const ab = parseFloat($('#ab').val());
-        const ac = parseFloat($('#ac').val());
-        const bc = parseFloat($('#bc').val());
+        // Inputs element.
+        const inputs = {
+            ad: $('#ad'),
+            ab: $('#ab'),
+            ae: $('#ae'),
+            ac: $('#ac'),
+            de: $('#de'),
+            bc: $('#bc')
+        };
 
-        const inputs = [
-            !isNaN(ad), !isNaN(ae), !isNaN(de),
-            !isNaN(ab), !isNaN(ac), !isNaN(bc)
-        ];
+        // Value of inputs.
+        const inputsValues = {
+            ad: parseFloat(inputs.ad.val()),
+            ab: parseFloat(inputs.ab.val()),
+            ae: parseFloat(inputs.ae.val()),
+            ac: parseFloat(inputs.ac.val()),
+            de: parseFloat(inputs.de.val()),
+            bc: parseFloat(inputs.bc.val())
+        };
+
+        // Check if input values are a number or not.
+        const inputsIsValid = new Map();
+        inputsIsValid.set(ad, !isNaN(inputsValues.ad));
+        inputsIsValid.set(ab, !isNaN(inputsValues.ab));
+        inputsIsValid.set(ae, !isNaN(inputsValues.ae));
+        inputsIsValid.set(ac, !isNaN(inputsValues.ac));
+        inputsIsValid.set(de, !isNaN(inputsValues.de));
+        inputsIsValid.set(bc, !isNaN(inputsValues.bc));
 
         const filterFn = b => b;
-        if (inputs.filter(filterFn).length === 4) {
-            const res = mathematics.interceptTheorem(ad, ab, ae, ac, de, bc);
+        if (Array.from(inputsIsValid.values()).filter(filterFn).length === 4) {
+            const res = mathematics.interceptTheorem(
+                inputsValues.ad, 
+                inputsValues.ab, 
+                inputsValues.ae, 
+                inputsValues.ac, 
+                inputsValues.de, 
+                inputsValues.bc
+            );
 
-            // Fill empty input and change background color of it to indicate the result.
-        } else if (inputs.filter(filterFn).length === 6) {
+            // Loop on each input fields and check is invalid, 
+            // then fill it with the value compute and change the background color.
+            for (let [key,value] of inputsIsValid) {
+                if (!value) {
+                    $(key).val(res[key.id]);
+                    $(key).addClass('computed-response');
+                }
+            }
+        } else if (Array.from(inputsIsValid.values()).filter(filterFn).length === 6) {
             // Execute converse of the theorem
         } else {
             utils.showResult(
@@ -101,12 +132,20 @@ $(document).ready(function() {
 
     // Clean fields on button click.
     $('#clean-fields').on('click', function() {
-        $('#ad').val('');
-        $('#ae').val('');
-        $('#de').val('');
-        $('#ab').val('');
-        $('#ac').val('');
-        $('#bc').val('');
+        const inputs = [
+            $('#ad'),
+            $('#ab'),
+            $('#ae'),
+            $('#ac'),
+            $('#de'),
+            $('#bc')
+        ];
+
+        for (let i = 0; i < inputs.length; ++i) {
+            let $node = inputs[i];
+            $($node).val('');
+            $($node).removeClass('computed-response');
+        }
     }); // #clean-fields.on
 }); // document.ready
 
