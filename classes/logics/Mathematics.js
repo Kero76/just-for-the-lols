@@ -153,6 +153,28 @@ class Mathematics {
     }
 
     /**
+     * Indicate if the segment [DE] and [BC] are parallel or not.
+     * 
+     * @param {number} ad 
+     *  Length of segment AD.
+     * @param {number} ab 
+     *  Length of segment AB.
+     * @param {number} ae 
+     *  Length of segment AE.
+     * @param {number} ac 
+     *  Length of segment AC.
+     * @param {number} precision 
+     *  Precision of the result excepted.
+     * @returns 
+     *  A boolean to indicate if the segment [DE] and [BC] are parallel or not.
+     * 
+     * @since 1.0
+     */
+    interceptTheoremConverse(ad, ab, ae, ac, precision = 100) {
+        return (Math.round((ad / ab) * precision) / precision) === (Math.round((ae / ac) * precision) / precision);
+    }
+
+    /**
      * Euclidean algorithm to compute the gcd.
      * 
      * @param {number} opA 

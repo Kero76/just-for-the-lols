@@ -100,7 +100,22 @@ $(document).ready(function() {
         inputsIsValid.set(bc, !isNaN(inputsValues.bc));
 
         const filterFn = b => b;
-        if (Array.from(inputsIsValid.values()).filter(filterFn).length === 4) {
+        if (inputsIsValid.get(ad) && inputsIsValid.get(ab) && inputsIsValid.get(ae) && inputsIsValid.get(ac) && 
+            Array.from(inputsIsValid.values()).filter(filterFn).length >= 4) {
+            const res = mathematics.interceptTheoremConverse(
+                inputsValues.ad, 
+                inputsValues.ab, 
+                inputsValues.ae, 
+                inputsValues.ac, 
+            );
+
+            utils.showResult(
+                'alert-result',
+                res,
+                ['Les droites (DE) & (BC) sont parallèles.', 'Les droites (DE) & (BC) ne sont pas  parallèles.'],
+                ['success', 'danger']
+            );
+        } else if (Array.from(inputsIsValid.values()).filter(filterFn).length === 4) {
             const res = mathematics.interceptTheorem(
                 inputsValues.ad, 
                 inputsValues.ab, 
@@ -118,8 +133,6 @@ $(document).ready(function() {
                     $(key).addClass('computed-response');
                 }
             }
-        } else if (Array.from(inputsIsValid.values()).filter(filterFn).length === 6) {
-            // Execute converse of the theorem
         } else {
             utils.showResult(
                 'alert-result', 
