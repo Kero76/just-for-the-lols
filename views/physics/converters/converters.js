@@ -1,4 +1,3 @@
-const render = new Render();
 const utils = new Utils();
 
 /**
@@ -6,46 +5,55 @@ const utils = new Utils();
  */
 function _hydrateAndRenderBodyTemplate() {
     const converters = new Converters();
+    const template = new Template(
+        converters.templateName, 
+        converters.parentBlock,
+        converters.data, 
+    );
 
-    render.renderTemplate('body-template', converters.data, 'body-content');
+    const render = new RenderLocalTemplate();
+    render.render(template);
 };
 
 /**
  * Function use to render all externals templates.
  */
 function _hydrateAndRenderExternalTemplates() {
-    const header = new Header();
-    const footer = new Footer();
+    const header = new Header(
+        './../../../templates/includes/header.jsr'
+    );
+    const footer = new Footer(
+        './../../../templates/includes/footer.jsr'
+    );
     const breadcrumb = new BreadCrumb(
         ['Hub', 'Physiques', 'Convertisseurs'], 
         ['../../../index.html', '', 'converters.html'],
-        ['before-icon-hub', 'before-icon-physics', '']
+        ['before-icon-hub', 'before-icon-physics', ''],
+        './../../../templates/includes/breadcrumb.jsr'
     );
 
-    const externalTemplatesPath = [
-        './../../../templates/includes/header.jsr',
-        './../../../templates/includes/breadcrumb.jsr',
-        './../../../templates/includes/footer.jsr',
-    ];
+    const headerTemplate = new Template(
+        header.templateName,
+        header.parentBlock,
+        header.data
+    );
 
-    const externalTemplatesData = [
-        header.data, 
-        breadcrumb.data,
+    const footerTemplate = new Template(
+        footer.templateName,
+        footer.parentBlock,
         footer.data
-    ];
-
-    const externalTemplatesTargetIds = [
-        'header-content',
-        'breadcrumb-content',
-        'footer-content'
-    ]
-
-    // Render the external templates.
-    render.renderExternalTemplates(
-        externalTemplatesPath, 
-        externalTemplatesData, 
-        externalTemplatesTargetIds
     );
+
+    const breadcrumbTemplate = new Template(
+        breadcrumb.templateName,
+        breadcrumb.parentBlock,
+        breadcrumb.data
+    );
+
+    const render = new RenderExternalTemplate();
+    render.render(headerTemplate);
+    render.render(footerTemplate);
+    render.render(breadcrumbTemplate);
 }
 
 /**
@@ -59,6 +67,8 @@ function _hydrateAndRenderExternalTemplates() {
  *  Id of the target unit.
  * @param {string} valueConvertedId 
  *  Id of the field who contains the value converted.
+ * 
+ * @since 1.0
  */
 function _convertUnit(valueId, initialUnitId, targetUnitId, valueConvertedId) {
     const value = parseFloat(utils.getHtmlNodeByIdName(valueId).val());
@@ -79,7 +89,7 @@ function _convertUnit(valueId, initialUnitId, targetUnitId, valueConvertedId) {
 /**
  * Function call after the page loading.
  * 
- * @see Utils.createBreadcrumb
+ * @since 1.0
  */
 $(document).ready(function() {
     _hydrateAndRenderBodyTemplate();
