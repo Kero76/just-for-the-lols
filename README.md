@@ -13,9 +13,9 @@ For example, if you type the following sentence :
 The algorithm return the following result : 
 > "? nairB si erehW" 
 
-### Is a Palindrome
+### Is a Palindrome ?
 
-A simple algorihme to check if a text send in parameter is a palindrome.  
+A simple algorithm to check if a text send in parameter is a palindrome.  
 As a reminder, a palindrom is a word that can be read indifferently from right to left as from left to right.  
 For example the string "kayak" can be read from left to right or from right to left.  
 Morevoer, the algorithm supports the case sensitive.
@@ -27,10 +27,22 @@ Morevoer, the algorithm supports the case sensitive.
 You just enter the 3 size's side and the app return a message to indicate if the triangle is right or not.  
 If you type only two side of the 3 possible side, the application compute the third size of the triangle and return the result.
 
-### GCD (Greatest Common divisor)
+### Intercept Theorem and his converse
+
+The Intercept Theorem can compute the ratio present between 2 segments present in a triangle.
+The converse consist in validating if 2 segments are parallel or not.  
+To use the Intercept Theorem, you just type 4 of 6 segments size and the app compute the other length and display it.  
+To use the converse of the Intercept Theorem, you just enter the length of the segment [AD], [AB], [AE] and [AC] and the app show if the lines [DE] and [BC] are parallel to each one. 
+
+### GCD (Greatest Common Divisor)
 
 This algorithm consist it get the greatest common divisor or GCD between two numbers.  
 You just enter the first and the second numbers to get the GCD.
+
+### LCM (Least Common Multiple)
+
+This algorithm consist in getting the Least Common Multiple between 2 number.  
+You just enter the first and the second number to get the LCM.
 
 ## Physics 
 

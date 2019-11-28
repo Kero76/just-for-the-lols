@@ -1,51 +1,59 @@
 const utils = new Utils();
-const render = new Render();
 
 /**
  * Internal function use to hydrate and render the reverse template.
  */
 function _hydrateAndRenderBodyTemplate() {
     const gcd = new Gcd();
+    const template = new Template(
+        gcd.templateName, 
+        gcd.parentBlock,
+        gcd.data, 
+    );
 
-    render.renderTemplate('body-template', gcd.data, 'body-content');
+    const render = new RenderLocalTemplate();
+    render.render(template);
 };
 
 /**
  * Function use to render all externals templates.
  */
 function _hydrateAndRenderExternalTemplates() {
-    const header = new Header();
-    const footer = new Footer();
+    const header = new Header(
+        './../../../templates/includes/header.jsr'
+    );
+    const footer = new Footer(
+        './../../../templates/includes/footer.jsr'
+    );
     const breadcrumb = new BreadCrumb(
         ['Hub', 'Mathématiques', 'PGCD'], 
         ['../../../index.html', '', 'gcd.html'],
-        ['before-icon-hub', 'before-icon-mathematics', '']
-    );
-
-    const externalTemplatesPath = [
-        './../../../templates/includes/header.jsr',
+        ['before-icon-hub', 'before-icon-mathematics', ''],
         './../../../templates/includes/breadcrumb.jsr',
-        './../../../templates/includes/footer.jsr',
-    ];
-
-    const externalTemplatesData = [
-        header.data, 
-        breadcrumb.data,
-        footer.data
-    ];
-
-    const externalTemplatesTargetIds = [
-        'header-content',
-        'breadcrumb-content',
-        'footer-content'
-    ]
-
-    // Render the external templates.
-    render.renderExternalTemplates(
-        externalTemplatesPath, 
-        externalTemplatesData, 
-        externalTemplatesTargetIds
     );
+
+    const headerTemplate = new Template(
+        header.templateName,
+        header.parentBlock,
+        header.data
+    );
+
+    const footerTemplate = new Template(
+        footer.templateName,
+        footer.parentBlock,
+        footer.data
+    );
+
+    const breadcrumbTemplate = new Template(
+        breadcrumb.templateName,
+        breadcrumb.parentBlock,
+        breadcrumb.data
+    );
+
+    const render = new RenderExternalTemplate();
+    render.render(headerTemplate);
+    render.render(footerTemplate);
+    render.render(breadcrumbTemplate);
 }
 
 /**
