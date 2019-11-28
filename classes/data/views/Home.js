@@ -35,6 +35,10 @@ class Home extends BaseTemplate {
                 "link": "views/maths/pythagorean/pythagorean.html"
             },
             {
+                "name": "Théorème de Thalès",
+                "link": "views/maths/thales/thales.html"
+            },
+            {
                 "name": "PGCD (Plus Grand Commun Diviseur)",
                 "link": "views/maths/gcd/gcd.html"
             },
